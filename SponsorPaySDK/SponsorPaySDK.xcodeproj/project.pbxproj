@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19A171369093C00D1F073E60 /* SPOfferType.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A174A1778410C6442B77E4 /* SPOfferType.m */; };
+		19A17172D414C6F7455A0CAB /* SPOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17F4437A2C89F5295266C /* SPOffer.m */; };
+		19A17628368D5342E069469C /* SPSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A173121AA4BF19C917FA30 /* SPSDKManager.m */; };
+		19A176F518DBA77CB0F4D592 /* SPTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A177434A997FB450E9F614 /* SPTime.m */; };
+		19A178959324AE4A2F6E0D05 /* SPOfferResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A176835B777B09DED77093 /* SPOfferResponse.m */; };
+		19A178D310D12D286D43A4A9 /* SPThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A1785BB8ACEB6FE0AE566A /* SPThumbnail.m */; };
+		19A17950A412F9B2B095EAF7 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 19A172E37A999DBDD349E704 /* response.json */; };
+		19A17C79B62F2C19A56BABE6 /* SPJSONDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17EE46011B24FB4E97D86 /* SPJSONDataParser.m */; };
+		19A17D0AE125A15DE015713B /* SPOfferResponseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17452FAC469449BB42B17 /* SPOfferResponseInformation.m */; };
+		19A17D7066B690726A8BFD6D /* SPSDKManager+Dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17B67061DD5E342502D24 /* SPSDKManager+Dummy.m */; };
+		19A17ED9B587067396129406 /* SPOfferClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A171B7BBFF67D1745D5D26 /* SPOfferClient.m */; };
+		3DB92DA019082D2B009124AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB92D9F19082D2B009124AE /* Foundation.framework */; };
+		3DB92DA519082D2B009124AE /* SponsorPaySDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3DB92DA419082D2B009124AE /* SponsorPaySDK.h */; };
+		3DB92DA719082D2B009124AE /* SponsorPaySDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB92DA619082D2B009124AE /* SponsorPaySDK.m */; };
+		3DB92DAE19082D2B009124AE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB92DAD19082D2B009124AE /* XCTest.framework */; };
+		3DB92DAF19082D2B009124AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB92D9F19082D2B009124AE /* Foundation.framework */; };
+		3DB92DB119082D2B009124AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB92DB019082D2B009124AE /* UIKit.framework */; };
+		3DB92DB419082D2B009124AE /* libSponsorPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB92D9C19082D2B009124AE /* libSponsorPaySDK.a */; };
+		3DB92DBA19082D2C009124AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB92DB819082D2C009124AE /* InfoPlist.strings */; };
+		3DB92DBC19082D2C009124AE /* SponsorPaySDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB92DBB19082D2C009124AE /* SponsorPaySDKTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DB92DB219082D2B009124AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DB92D9419082D2B009124AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DB92D9B19082D2B009124AE;
+			remoteInfo = SponsorPaySDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3DB92D9A19082D2B009124AE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				3DB92DA519082D2B009124AE /* SponsorPaySDK.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		19A1704834FD550A7644AA7A /* SPDictionaryInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDictionaryInitializer.h; sourceTree = "<group>"; };
+		19A170F828FDCC027C783D25 /* SPJSONDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPJSONDataParser.h; sourceTree = "<group>"; };
+		19A171B7BBFF67D1745D5D26 /* SPOfferClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferClient.m; sourceTree = "<group>"; };
+		19A172E37A999DBDD349E704 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = response.json; sourceTree = "<group>"; };
+		19A173121AA4BF19C917FA30 /* SPSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSDKManager.m; sourceTree = "<group>"; };
+		19A17452FAC469449BB42B17 /* SPOfferResponseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferResponseInformation.m; sourceTree = "<group>"; };
+		19A174A0ABD555670661CECF /* SPSDKManager+Dummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPSDKManager+Dummy.h"; sourceTree = "<group>"; };
+		19A174A1778410C6442B77E4 /* SPOfferType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferType.m; sourceTree = "<group>"; };
+		19A176835B777B09DED77093 /* SPOfferResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferResponse.m; sourceTree = "<group>"; };
+		19A176A1923448C139389B9A /* SPOfferResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferResponse.h; sourceTree = "<group>"; };
+		19A17730C6629BC5560FEA47 /* SPOfferType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferType.h; sourceTree = "<group>"; };
+		19A177434A997FB450E9F614 /* SPTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTime.m; sourceTree = "<group>"; };
+		19A1782FE60A8917D35DBD68 /* SPOfferResponseInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferResponseInformation.h; sourceTree = "<group>"; };
+		19A1785BB8ACEB6FE0AE566A /* SPThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPThumbnail.m; sourceTree = "<group>"; };
+		19A178C14F86CCB930A984B8 /* SPOfferClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferClient.h; sourceTree = "<group>"; };
+		19A17A73F02BE2E34FFB60E2 /* SPOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOffer.h; sourceTree = "<group>"; };
+		19A17B67061DD5E342502D24 /* SPSDKManager+Dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPSDKManager+Dummy.m"; sourceTree = "<group>"; };
+		19A17BB2555A0E35240C51D0 /* SPTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTime.h; sourceTree = "<group>"; };
+		19A17D4BF0C3DBA76178CF57 /* SPDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDataParser.h; sourceTree = "<group>"; };
+		19A17EE46011B24FB4E97D86 /* SPJSONDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPJSONDataParser.m; sourceTree = "<group>"; };
+		19A17F14493550D5CAB1B6BA /* SPThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPThumbnail.h; sourceTree = "<group>"; };
+		19A17F4437A2C89F5295266C /* SPOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOffer.m; sourceTree = "<group>"; };
+		19A17F9307B3725AA36A1283 /* SPSDKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSDKManager.h; sourceTree = "<group>"; };
+		3DB92D9C19082D2B009124AE /* libSponsorPaySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSponsorPaySDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DB92D9F19082D2B009124AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3DB92DA319082D2B009124AE /* SponsorPaySDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SponsorPaySDK-Prefix.pch"; sourceTree = "<group>"; };
+		3DB92DA419082D2B009124AE /* SponsorPaySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SponsorPaySDK.h; sourceTree = "<group>"; };
+		3DB92DA619082D2B009124AE /* SponsorPaySDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorPaySDK.m; sourceTree = "<group>"; };
+		3DB92DAC19082D2B009124AE /* SponsorPaySDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SponsorPaySDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DB92DAD19082D2B009124AE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3DB92DB019082D2B009124AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		3DB92DB719082D2C009124AE /* SponsorPaySDKTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SponsorPaySDKTests-Info.plist"; sourceTree = "<group>"; };
+		3DB92DB919082D2C009124AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3DB92DBB19082D2C009124AE /* SponsorPaySDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorPaySDKTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DB92D9919082D2B009124AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DB92DA019082D2B009124AE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DB92DA919082D2B009124AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DB92DB419082D2B009124AE /* libSponsorPaySDK.a in Frameworks */,
+				3DB92DAE19082D2B009124AE /* XCTest.framework in Frameworks */,
+				3DB92DB119082D2B009124AE /* UIKit.framework in Frameworks */,
+				3DB92DAF19082D2B009124AE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19A1712303DC6FED94AC510C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				19A178C14F86CCB930A984B8 /* SPOfferClient.h */,
+				19A171B7BBFF67D1745D5D26 /* SPOfferClient.m */,
+				19A17ADEE3CA6BC0C2E4CDD6 /* Parser */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		19A171D78DDA30C8CF265A29 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				19A174A0ABD555670661CECF /* SPSDKManager+Dummy.h */,
+				19A17B67061DD5E342502D24 /* SPSDKManager+Dummy.m */,
+				19A17F9307B3725AA36A1283 /* SPSDKManager.h */,
+				19A173121AA4BF19C917FA30 /* SPSDKManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		19A1757ABE65F05156E693E1 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				19A17D8864598F990ADAF16B /* Model */,
+				19A1712303DC6FED94AC510C /* Network */,
+				19A171D78DDA30C8CF265A29 /* Manager */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		19A177EAA358FA385F68AD6B /* Test Files */ = {
+			isa = PBXGroup;
+			children = (
+				19A172E37A999DBDD349E704 /* response.json */,
+			);
+			path = "Test Files";
+			sourceTree = "<group>";
+		};
+		19A178E098C21874CBAB61F5 /* JSON Initializers */ = {
+			isa = PBXGroup;
+			children = (
+				19A1704834FD550A7644AA7A /* SPDictionaryInitializer.h */,
+			);
+			path = "JSON Initializers";
+			sourceTree = "<group>";
+		};
+		19A17ADEE3CA6BC0C2E4CDD6 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				19A17D4BF0C3DBA76178CF57 /* SPDataParser.h */,
+				19A170F828FDCC027C783D25 /* SPJSONDataParser.h */,
+				19A17EE46011B24FB4E97D86 /* SPJSONDataParser.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		19A17D8864598F990ADAF16B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19A178E098C21874CBAB61F5 /* JSON Initializers */,
+				19A17A73F02BE2E34FFB60E2 /* SPOffer.h */,
+				19A17F4437A2C89F5295266C /* SPOffer.m */,
+				19A176A1923448C139389B9A /* SPOfferResponse.h */,
+				19A176835B777B09DED77093 /* SPOfferResponse.m */,
+				19A1782FE60A8917D35DBD68 /* SPOfferResponseInformation.h */,
+				19A17452FAC469449BB42B17 /* SPOfferResponseInformation.m */,
+				19A17730C6629BC5560FEA47 /* SPOfferType.h */,
+				19A174A1778410C6442B77E4 /* SPOfferType.m */,
+				19A17F14493550D5CAB1B6BA /* SPThumbnail.h */,
+				19A1785BB8ACEB6FE0AE566A /* SPThumbnail.m */,
+				19A17BB2555A0E35240C51D0 /* SPTime.h */,
+				19A177434A997FB450E9F614 /* SPTime.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3DB92D9319082D2B009124AE = {
+			isa = PBXGroup;
+			children = (
+				3DB92DA119082D2B009124AE /* SponsorPaySDK */,
+				3DB92DB519082D2B009124AE /* SponsorPaySDKTests */,
+				3DB92D9E19082D2B009124AE /* Frameworks */,
+				3DB92D9D19082D2B009124AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DB92D9D19082D2B009124AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DB92D9C19082D2B009124AE /* libSponsorPaySDK.a */,
+				3DB92DAC19082D2B009124AE /* SponsorPaySDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DB92D9E19082D2B009124AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DB92D9F19082D2B009124AE /* Foundation.framework */,
+				3DB92DAD19082D2B009124AE /* XCTest.framework */,
+				3DB92DB019082D2B009124AE /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3DB92DA119082D2B009124AE /* SponsorPaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				3DB92DA419082D2B009124AE /* SponsorPaySDK.h */,
+				3DB92DA619082D2B009124AE /* SponsorPaySDK.m */,
+				3DB92DA219082D2B009124AE /* Supporting Files */,
+				19A1757ABE65F05156E693E1 /* Sources */,
+			);
+			path = SponsorPaySDK;
+			sourceTree = "<group>";
+		};
+		3DB92DA219082D2B009124AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DB92DA319082D2B009124AE /* SponsorPaySDK-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DB92DB519082D2B009124AE /* SponsorPaySDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DB92DBB19082D2C009124AE /* SponsorPaySDKTests.m */,
+				3DB92DB619082D2C009124AE /* Supporting Files */,
+				19A177EAA358FA385F68AD6B /* Test Files */,
+			);
+			path = SponsorPaySDKTests;
+			sourceTree = "<group>";
+		};
+		3DB92DB619082D2C009124AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DB92DB719082D2C009124AE /* SponsorPaySDKTests-Info.plist */,
+				3DB92DB819082D2C009124AE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DB92D9B19082D2B009124AE /* SponsorPaySDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DB92DBF19082D2C009124AE /* Build configuration list for PBXNativeTarget "SponsorPaySDK" */;
+			buildPhases = (
+				3DB92D9819082D2B009124AE /* Sources */,
+				3DB92D9919082D2B009124AE /* Frameworks */,
+				3DB92D9A19082D2B009124AE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SponsorPaySDK;
+			productName = SponsorPaySDK;
+			productReference = 3DB92D9C19082D2B009124AE /* libSponsorPaySDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3DB92DAB19082D2B009124AE /* SponsorPaySDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DB92DC219082D2C009124AE /* Build configuration list for PBXNativeTarget "SponsorPaySDKTests" */;
+			buildPhases = (
+				3DB92DA819082D2B009124AE /* Sources */,
+				3DB92DA919082D2B009124AE /* Frameworks */,
+				3DB92DAA19082D2B009124AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DB92DB319082D2B009124AE /* PBXTargetDependency */,
+			);
+			name = SponsorPaySDKTests;
+			productName = SponsorPaySDKTests;
+			productReference = 3DB92DAC19082D2B009124AE /* SponsorPaySDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DB92D9419082D2B009124AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SP;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Tequila Apps";
+			};
+			buildConfigurationList = 3DB92D9719082D2B009124AE /* Build configuration list for PBXProject "SponsorPaySDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3DB92D9319082D2B009124AE;
+			productRefGroup = 3DB92D9D19082D2B009124AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DB92D9B19082D2B009124AE /* SponsorPaySDK */,
+				3DB92DAB19082D2B009124AE /* SponsorPaySDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DB92DAA19082D2B009124AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DB92DBA19082D2C009124AE /* InfoPlist.strings in Resources */,
+				19A17950A412F9B2B095EAF7 /* response.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DB92D9819082D2B009124AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DB92DA719082D2B009124AE /* SponsorPaySDK.m in Sources */,
+				19A17ED9B587067396129406 /* SPOfferClient.m in Sources */,
+				19A17628368D5342E069469C /* SPSDKManager.m in Sources */,
+				19A17C79B62F2C19A56BABE6 /* SPJSONDataParser.m in Sources */,
+				19A17172D414C6F7455A0CAB /* SPOffer.m in Sources */,
+				19A171369093C00D1F073E60 /* SPOfferType.m in Sources */,
+				19A178D310D12D286D43A4A9 /* SPThumbnail.m in Sources */,
+				19A176F518DBA77CB0F4D592 /* SPTime.m in Sources */,
+				19A178959324AE4A2F6E0D05 /* SPOfferResponse.m in Sources */,
+				19A17D0AE125A15DE015713B /* SPOfferResponseInformation.m in Sources */,
+				19A17D7066B690726A8BFD6D /* SPSDKManager+Dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DB92DA819082D2B009124AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DB92DBC19082D2C009124AE /* SponsorPaySDKTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DB92DB319082D2B009124AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DB92D9B19082D2B009124AE /* SponsorPaySDK */;
+			targetProxy = 3DB92DB219082D2B009124AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3DB92DB819082D2C009124AE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DB92DB919082D2C009124AE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DB92DBD19082D2C009124AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3DB92DBE19082D2C009124AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DB92DC019082D2C009124AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SponsorPaySDK.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SponsorPaySDK/SponsorPaySDK-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3DB92DC119082D2C009124AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SponsorPaySDK.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SponsorPaySDK/SponsorPaySDK-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3DB92DC319082D2C009124AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SponsorPaySDK/SponsorPaySDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SponsorPaySDKTests/SponsorPaySDKTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3DB92DC419082D2C009124AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SponsorPaySDK/SponsorPaySDK-Prefix.pch";
+				INFOPLIST_FILE = "SponsorPaySDKTests/SponsorPaySDKTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DB92D9719082D2B009124AE /* Build configuration list for PBXProject "SponsorPaySDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DB92DBD19082D2C009124AE /* Debug */,
+				3DB92DBE19082D2C009124AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DB92DBF19082D2C009124AE /* Build configuration list for PBXNativeTarget "SponsorPaySDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DB92DC019082D2C009124AE /* Debug */,
+				3DB92DC119082D2C009124AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DB92DC219082D2C009124AE /* Build configuration list for PBXNativeTarget "SponsorPaySDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DB92DC319082D2C009124AE /* Debug */,
+				3DB92DC419082D2C009124AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DB92D9419082D2B009124AE /* Project object */;
+}
