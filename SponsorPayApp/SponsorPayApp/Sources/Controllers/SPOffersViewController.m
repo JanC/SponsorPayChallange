@@ -9,6 +9,7 @@
 #import "SPSDKManager+Dummy.h"
 #import "SPOffer.h"
 #import "NSNumber+SPFormat.h"
+#import "SPOfferResponse.h"
 
 #pragma mark - Constants
 
@@ -68,6 +69,19 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
     #warning dummy content
     self.offersArray = [[SPSDKManager sharedManager] sampleOffers];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [[SPSDKManager sharedManager] listOffersPage:0 completion:^(SPOfferResponse *offerResponse) {
+        self.offersArray = offerResponse.offers;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+
+    }];
+}
+
 
 #pragma mark - Protocols -
 #pragma mark UITableViewDataSource

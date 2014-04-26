@@ -5,6 +5,7 @@
 
 #import "SPSDKManager.h"
 #import "SPOfferClient.h"
+#import "SPURLGenerator.h"
 
 @interface SPSDKManager ()
 
@@ -50,6 +51,32 @@
 
     self.offerClient = [[SPOfferClient alloc] initWithApplicationId:applicationId userId:userId apiKey:apiKey];
 
+}
+
+- (NSURLSessionTask *)listOffersPage:(NSUInteger)page completion:(SPOfferCompletionBlock)completion {
+
+    NSAssert(self.offerClient, @"You must call %@ first", NSStringFromSelector(@selector(setupForApplicationId:userId:apiKey:)));
+
+    NSDictionary *requestParameters;
+    if(page > 0) {
+        requestParameters = @{
+                SPURLOffersParamPage : @(page)
+        };
+    }
+
+
+    return [self.offerClient listOffersWithCustomParameter:requestParameters completion:^(SPOfferResponse *offerResponse) {
+
+        //
+        // Just forward the completion to the caller. Here is the place where I would do any local persistence or
+        // other business logic
+        //
+        if(completion)
+        {
+            completion(offerResponse);
+        }
+
+    }];
 }
 
 @end

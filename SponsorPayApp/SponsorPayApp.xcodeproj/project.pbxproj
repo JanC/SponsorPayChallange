@@ -27,6 +27,7 @@
 		3DB92DF519082E27009124AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB92DF319082E27009124AE /* InfoPlist.strings */; };
 		3DB92DF719082E27009124AE /* SponsorPayAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB92DF619082E27009124AE /* SponsorPayAppTests.m */; };
 		3DB92E01190834DD009124AE /* libSponsorPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB92E00190834DD009124AE /* libSponsorPaySDK.a */; };
+		3DBC5B4F190BDD7D002A4EC9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBC5B4E190BDD7D002A4EC9 /* AdSupport.framework */; };
 		3DF982A9190BB13F00555CBB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF982A8190BB13F00555CBB /* Reveal.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		3DB92DF419082E27009124AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3DB92DF619082E27009124AE /* SponsorPayAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorPayAppTests.m; sourceTree = "<group>"; };
 		3DB92E00190834DD009124AE /* libSponsorPaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSponsorPaySDK.a; path = "../SponsorPaySDK/build/Debug-iphoneos/libSponsorPaySDK.a"; sourceTree = "<group>"; };
+		3DBC5B4E190BDD7D002A4EC9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		3DF982A8190BB13F00555CBB /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBC5B4F190BDD7D002A4EC9 /* AdSupport.framework in Frameworks */,
 				3DB92E01190834DD009124AE /* libSponsorPaySDK.a in Frameworks */,
 				3DB92DD419082E27009124AE /* CoreGraphics.framework in Frameworks */,
 				3DF982A9190BB13F00555CBB /* Reveal.framework in Frameworks */,
@@ -216,6 +219,7 @@
 		3DB92DD019082E27009124AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DBC5B4E190BDD7D002A4EC9 /* AdSupport.framework */,
 				3DF982A8190BB13F00555CBB /* Reveal.framework */,
 				3DB92E00190834DD009124AE /* libSponsorPaySDK.a */,
 				3DB92DD119082E27009124AE /* Foundation.framework */,

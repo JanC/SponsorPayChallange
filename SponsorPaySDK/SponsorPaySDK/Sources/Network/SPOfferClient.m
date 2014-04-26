@@ -6,6 +6,8 @@
 #import "SPOfferClient.h"
 #import "SPDataParser.h"
 #import "SPJSONDataParser.h"
+#import "SPOfferResponse.h"
+#import "SPURLGenerator.h"
 
 #pragma mark - Constants
 
@@ -22,6 +24,7 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
 @property(nonatomic, strong) NSURLSession *urlSession;
 
 @property(nonatomic, strong) id <SPDataParser> dataParser;
+@property (nonatomic, strong) SPURLGenerator *urlGenerator;
 @end
 
 @implementation SPOfferClient {
@@ -51,33 +54,48 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
         //
         self.dataParser = [[SPJSONDataParser alloc] init];
 
+        //
+        // Setup URL Generator and response verifier
+        //
+        self.urlGenerator = [[SPURLGenerator alloc] initWithApplicationId:applicationId userId:userId apiKey:apiKey];
+
     }
 
     return self;
 }
 
-- (NSURLSessionTask *)listOffersWithCompletion:(SPOfferCompletionBlock)completion
+- (NSURLSessionTask *)listOffersWithCustomParameter:(NSDictionary *)customParameters completion:(SPOfferCompletionBlock)completion
 {
 
-    NSURL *requestUrl = [NSURL URLWithString:SPOfferClientBaseURL];
 
     //
     // prepare request
     //
-
+    NSString *parametersString = [self.urlGenerator offersURLWithParameters:customParameters];
+    NSURL *requestUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@?%@", SPOfferClientBaseURL, parametersString]];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:requestUrl];
     //
     // send request
     //
 
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:requestUrl];
-
     NSURLSessionTask *sessionTask = [self.urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-
+        NSLog(@"Received HTTP %d", httpResponse.statusCode);
         if (httpResponse.statusCode == 200)
         {
-            [self.dataParser parseOfferListResponse:data];
+            SPOfferResponse * offerResponse = [self.dataParser parseOfferListResponse:data];
+            if(completion)
+            {
+                completion(offerResponse);
+            }
+        }
+        else
+        {
+            NSLog(@"HTTP error %@", error);
+            //
+            // Handle known error code
+            //
         }
     }];
 

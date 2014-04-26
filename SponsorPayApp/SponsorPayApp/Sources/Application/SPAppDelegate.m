@@ -17,6 +17,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
+    [[SPSDKManager sharedManager] setupForApplicationId:@"2070" userId:@"spiderman" apiKey:@"1c915e3b5d42d05136185030892fbb846c278927"];
+
     UIViewController *firstViewController = [[SPOffersViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:firstViewController];
     self.window.rootViewController = navigationController;

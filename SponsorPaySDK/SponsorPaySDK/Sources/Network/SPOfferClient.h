@@ -5,7 +5,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^SPOfferCompletionBlock) (NSObject *spOfferResponse);
+@class SPOfferResponse;
+
+typedef void (^SPOfferCompletionBlock) (SPOfferResponse *offerResponse);
 
 @interface SPOfferClient : NSObject
 
@@ -14,6 +16,6 @@ typedef void (^SPOfferCompletionBlock) (NSObject *spOfferResponse);
 /**
  *  Fetches the list if the Offers
  */
--(NSURLSessionTask *) listOffersWithCompletion:(SPOfferCompletionBlock) completion;
+- (NSURLSessionTask *)listOffersWithCustomParameter:(NSDictionary *)customParameters completion:(SPOfferCompletionBlock)completion;
 
 @end

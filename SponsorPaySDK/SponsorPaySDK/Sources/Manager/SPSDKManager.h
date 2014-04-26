@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SPOfferClient.h"
 
 @interface SPSDKManager : NSObject
 
@@ -12,4 +13,6 @@
 - (void)setupForApplicationId:(NSString *)applicationId
     userId:(NSString *)userId
     apiKey:(NSString *)apiKey;
+
+- (NSURLSessionTask *)listOffersPage:(NSUInteger)page completion:(SPOfferCompletionBlock)completion;
 @end
