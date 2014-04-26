@@ -20,6 +20,7 @@
         _offerId = dictionary[@"offer_id"];
         _teaser = dictionary[@"teaser"];
         _requiredActions = dictionary[@"required_actions"];
+        _payout = @( [dictionary[@"payout"] doubleValue] );
 
         #warning incomplete implementation
     }

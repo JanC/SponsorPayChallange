@@ -4,16 +4,20 @@
 //
 
 #import "SPOfferTableViewCell.h"
+#import "UIColor+SPStyle.h"
+#import "UIFont+SPStyle.h"
+#import "SPOfferTypeLabel.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface SPOfferTableViewCell()
+@interface SPOfferTableViewCell ()
 
-@property (nonatomic, strong, readwrite) UIImageView *offerImageView;
-@property (nonatomic, strong, readwrite) UILabel *offerTitleLabel;
-@property (nonatomic, strong, readwrite) UILabel *offerTeaserLabel;
-@property (nonatomic, strong, readwrite) UILabel *offerPayoutLabel;
-@property (nonatomic, strong, readwrite) UILabel *offerTypeLabel;
+@property(nonatomic, strong, readwrite) UIImageView *offerImageView;
+@property(nonatomic, strong, readwrite) UILabel *offerTitleLabel;
+@property(nonatomic, strong, readwrite) UILabel *offerTeaserLabel;
+@property(nonatomic, strong, readwrite) UILabel *offerPayoutLabel;
+@property(nonatomic, strong, readwrite) UILabel *offerTypeLabel;
 
-@property (nonatomic, assign, readwrite) BOOL didUpdateConstraints;
+@property(nonatomic, assign, readwrite) BOOL didUpdateConstraints;
 
 @end
 
@@ -34,11 +38,28 @@
         self.offerTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.offerTeaserLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.offerPayoutLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.offerTypeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.offerTypeLabel = [[SPOfferTypeLabel alloc] initWithFrame:CGRectZero];
+
+        self.offerTeaserLabel.numberOfLines = 2;
+
+        self.offerPayoutLabel.textAlignment = NSTextAlignmentCenter;
+        self.offerPayoutLabel.layer.cornerRadius = 2;
+        self.offerPayoutLabel.layer.masksToBounds = YES;
 
         //
         // Style
         //
+        self.offerTitleLabel.textColor = [UIColor SPTableViewCellOfferTitleColor];
+        self.offerTeaserLabel.textColor = [UIColor SPTableViewCellOfferTeaserColor];
+        self.offerTypeLabel.textColor = [UIColor SPTableViewCellOfferTypeColor];
+        self.offerTypeLabel.backgroundColor = [UIColor SPTableViewCellOfferTypeBackgroundColor];
+        self.offerPayoutLabel.textColor = [UIColor SPTableViewCellOfferPayoutColor];
+        self.offerPayoutLabel.backgroundColor = [UIColor SPTableViewCellOfferPayoutBackgroundColor];
+
+        self.offerTitleLabel.font = [UIFont SPTableViewCellOfferTitleFont];
+        self.offerTypeLabel.font = [UIFont SPTableViewCellOfferTypeFont];
+        self.offerTeaserLabel.font = [UIFont SPTableViewCellOfferTeaserFont];
+        self.offerPayoutLabel.font = [UIFont SPTableViewCellOfferPayoutFont];
 
 
         //
@@ -64,8 +85,7 @@
 - (void)updateConstraints {
     [super updateConstraints];
 
-    if(self.didUpdateConstraints)
-    {
+    if (self.didUpdateConstraints) {
         return;
     }
 
@@ -73,8 +93,10 @@
     NSDictionary *metrics = @{
             @"topSpace" : @10,
             @"bottomSpace" : @10,
+            @"rightSpace" : @10,
             @"horizontalSpace" : @10,
-            @"verticalSpace" : @0,
+            @"verticalSpace" : @5,
+            @"payoutLabelWidth" : @60,
             @"imageViewWidth" : @60,
             @"imageViewHeight" : @60
 
@@ -90,13 +112,13 @@
     //
     // Title: pin to top and image view
     //
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTitleLabel]-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTitleLabel]-(rightSpace)-|" options:0 metrics:metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(topSpace)-[_offerTitleLabel]" options:0 metrics:metrics views:views]];
 
     //
     // Payout: under the title, pinned to right
     //
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerPayoutLabel]-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerPayoutLabel(payoutLabelWidth)]-(rightSpace)-|" options:0 metrics:metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTitleLabel]-[_offerPayoutLabel]" options:0 metrics:metrics views:views]];
 
     //
@@ -113,6 +135,20 @@
 
     self.didUpdateConstraints = YES;
 
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    // Make sure the contentView does a layout pass here so that its subviews have their frames set, which we
+    // need to use to set the preferredMaxLayoutWidth below.
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
+
+    // Set the preferredMaxLayoutWidth of the mutli-line bodyLabel based on the evaluated width of the label's frame,
+    // as this will allow the text to wrap correctly, and as a result allow the label to take on the correct height.
+    self.offerTeaserLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.offerTeaserLabel.frame);
 }
 
 

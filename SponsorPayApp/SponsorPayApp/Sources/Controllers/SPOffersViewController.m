@@ -8,6 +8,7 @@
 #import "SPSDKManager.h"
 #import "SPSDKManager+Dummy.h"
 #import "SPOffer.h"
+#import "NSNumber+SPFormat.h"
 
 #pragma mark - Constants
 
@@ -135,7 +136,7 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
     cell.offerTitleLabel.text = offer.title;
     cell.offerTeaserLabel.text = offer.teaser;
     cell.offerTypeLabel.text = @"Free";
-    cell.offerPayoutLabel.text = @"90";
+    cell.offerPayoutLabel.text = [offer.payout SPPayoutString];
 }
 
 @end
