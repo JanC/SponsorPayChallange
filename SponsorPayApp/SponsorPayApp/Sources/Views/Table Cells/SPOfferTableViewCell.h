@@ -6,4 +6,10 @@
 #import <Foundation/Foundation.h>
 
 @interface SPOfferTableViewCell : UITableViewCell
+
+@property (nonatomic, strong, readonly) UIImageView *offerImageView;
+@property (nonatomic, strong, readonly) UILabel *offerTitleLabel;
+@property (nonatomic, strong, readonly) UILabel *offerTeaserLabel;
+@property (nonatomic, strong, readonly) UILabel *offerPayoutLabel;
+@property (nonatomic, strong, readonly) UILabel *offerTypeLabel;
 @end

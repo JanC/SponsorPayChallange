@@ -23,6 +23,7 @@
 		3DB92DF519082E27009124AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB92DF319082E27009124AE /* InfoPlist.strings */; };
 		3DB92DF719082E27009124AE /* SponsorPayAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB92DF619082E27009124AE /* SponsorPayAppTests.m */; };
 		3DB92E01190834DD009124AE /* libSponsorPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB92E00190834DD009124AE /* libSponsorPaySDK.a */; };
+		3DF982A9190BB13F00555CBB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF982A8190BB13F00555CBB /* Reveal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,13 +52,14 @@
 		3DB92DDB19082E27009124AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3DB92DDD19082E27009124AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3DB92DDF19082E27009124AE /* SponsorPayApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SponsorPayApp-Prefix.pch"; sourceTree = "<group>"; };
-		3DB92DE319082E27009124AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3DB92DE319082E27009124AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		3DB92DE919082E27009124AE /* SponsorPayAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SponsorPayAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB92DEA19082E27009124AE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3DB92DF219082E27009124AE /* SponsorPayAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SponsorPayAppTests-Info.plist"; sourceTree = "<group>"; };
 		3DB92DF419082E27009124AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3DB92DF619082E27009124AE /* SponsorPayAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorPayAppTests.m; sourceTree = "<group>"; };
 		3DB92E00190834DD009124AE /* libSponsorPaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSponsorPaySDK.a; path = "../SponsorPaySDK/build/Debug-iphoneos/libSponsorPaySDK.a"; sourceTree = "<group>"; };
+		3DF982A8190BB13F00555CBB /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			files = (
 				3DB92E01190834DD009124AE /* libSponsorPaySDK.a in Frameworks */,
 				3DB92DD419082E27009124AE /* CoreGraphics.framework in Frameworks */,
+				3DF982A9190BB13F00555CBB /* Reveal.framework in Frameworks */,
 				3DB92DD619082E27009124AE /* UIKit.framework in Frameworks */,
 				3DB92DD219082E27009124AE /* Foundation.framework in Frameworks */,
 			);
@@ -97,6 +100,7 @@
 		19A17719BE1C408C085E3997 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3DB92DE319082E27009124AE /* Images.xcassets */,
 				19A1797BD2E864B461A8E74B /* Test Files */,
 			);
 			path = Resources;
@@ -168,6 +172,7 @@
 		3DB92DD019082E27009124AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DF982A8190BB13F00555CBB /* Reveal.framework */,
 				3DB92E00190834DD009124AE /* libSponsorPaySDK.a */,
 				3DB92DD119082E27009124AE /* Foundation.framework */,
 				3DB92DD319082E27009124AE /* CoreGraphics.framework */,
@@ -180,7 +185,6 @@
 		3DB92DD719082E27009124AE /* SponsorPayApp */ = {
 			isa = PBXGroup;
 			children = (
-				3DB92DE319082E27009124AE /* Images.xcassets */,
 				3DB92DD819082E27009124AE /* Supporting Files */,
 				19A17C1DD36CF3CCFDE16A82 /* Sources */,
 				19A17719BE1C408C085E3997 /* Resources */,
@@ -434,6 +438,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SponsorPayApp/SponsorPayApp-Prefix.pch";
 				INFOPLIST_FILE = "SponsorPayApp/SponsorPayApp-Info.plist";
@@ -453,6 +461,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SponsorPayApp/SponsorPayApp-Prefix.pch";
 				INFOPLIST_FILE = "SponsorPayApp/SponsorPayApp-Info.plist";

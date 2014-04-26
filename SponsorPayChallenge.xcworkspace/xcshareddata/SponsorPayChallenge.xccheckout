@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2AFC51F1-6299-4B4B-B0D5-8E1F7CF1CAC9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SponsorPayChallenge</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8CD5D962-F9B3-4041-B1A9-E14B88DF20B5</key>
+		<string>https://github.com/JanC/SponsorPayChallange.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SponsorPayChallenge.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8CD5D962-F9B3-4041-B1A9-E14B88DF20B5</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/JanC/SponsorPayChallange.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8CD5D962-F9B3-4041-B1A9-E14B88DF20B5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8CD5D962-F9B3-4041-B1A9-E14B88DF20B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SponsorPayChallenge</string>
+		</dict>
+	</array>
+</dict>
+</plist>
