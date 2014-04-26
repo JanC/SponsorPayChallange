@@ -10,6 +10,6 @@
 @interface SPOfferType : NSObject <SPDictionaryInitializer>
 
 @property(nonatomic, copy, readonly) NSString *readable;
-@property(nonatomic, assign, readonly) NSUInteger *uid;
+@property(nonatomic, assign, readonly) NSInteger uid;
 
 @end

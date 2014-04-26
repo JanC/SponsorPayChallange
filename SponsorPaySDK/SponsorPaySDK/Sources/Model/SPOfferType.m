@@ -8,4 +8,15 @@
 @implementation SPOfferType {
 
 }
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    self = [self init];
+    if(self)
+    {
+        _readable = dictionary[@"readable"];
+        _uid = [dictionary[@"offer_type_id"] integerValue];
+
+    }
+    return self;
+}
+
 @end

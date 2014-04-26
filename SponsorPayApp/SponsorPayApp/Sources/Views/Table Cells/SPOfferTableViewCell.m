@@ -46,6 +46,8 @@
         self.offerPayoutLabel.layer.cornerRadius = 2;
         self.offerPayoutLabel.layer.masksToBounds = YES;
 
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+
         //
         // Style
         //

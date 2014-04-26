@@ -6,10 +6,12 @@
 #import "SPOffersViewController.h"
 #import "SPOfferTableViewCell.h"
 #import "SPSDKManager.h"
-#import "SPSDKManager+Dummy.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "SPOffer.h"
 #import "NSNumber+SPFormat.h"
 #import "SPOfferResponse.h"
+#import "SPThumbnail.h"
+#import "SPOfferType.h"
 
 #pragma mark - Constants
 
@@ -65,9 +67,6 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|" options:0
                                                                       metrics:nil
                                                                         views:viewDictionary]];
-
-    #warning dummy content
-    self.offersArray = [[SPSDKManager sharedManager] sampleOffers];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -149,8 +148,23 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
     cell.offerImageView.image = [UIImage imageNamed:@"cellTestImage"];
     cell.offerTitleLabel.text = offer.title;
     cell.offerTeaserLabel.text = offer.teaser;
-    cell.offerTypeLabel.text = @"Free";
+    cell.offerTypeLabel.text = ((SPOfferType*) offer.offerTypes[0]).readable;
     cell.offerPayoutLabel.text = [offer.payout SPPayoutString];
+
+    cell.offerImageView.alpha = 0;
+    SPOfferTableViewCell *__weak weakCell = cell;
+
+    [cell.offerImageView cancelCurrentImageLoad];
+    [cell.offerImageView setImageWithURL:offer.thumbnail.highresURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        // if image downloaded, make a alpha animation
+        if (error)
+        {
+            NSLog(@"failed getting tumbnail image %@: %@", offer.thumbnail.highresURL.absoluteString, error);
+        }
+        [UIView animateWithDuration:cacheType == SDImageCacheTypeNone ? 1.0:0.0 animations:^{
+            weakCell.offerImageView.alpha = 1;
+        }];
+    }];
 }
 
 @end

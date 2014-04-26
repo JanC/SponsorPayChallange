@@ -6,6 +6,7 @@
 #import "SPOffer.h"
 #import "SPTime.h"
 #import "SPThumbnail.h"
+#import "SPOfferType.h"
 
 @implementation SPOffer {
 
@@ -22,7 +23,16 @@
         _requiredActions = dictionary[@"required_actions"];
         _payout = @( [dictionary[@"payout"] doubleValue] );
 
-        #warning incomplete implementation
+        NSMutableArray *offerTypes = [NSMutableArray array];
+        [dictionary[@"offer_types"] enumerateObjectsUsingBlock:^(NSDictionary * offerTypeDictionary, NSUInteger idx, BOOL *stop) {
+            SPOfferType *offerType = [[SPOfferType alloc] initWithDictionary:offerTypeDictionary];
+            [offerTypes addObject:offerType];
+        }];
+
+        _offerTypes = [NSArray arrayWithArray:offerTypes];
+
+        _thumbnail = [[SPThumbnail alloc] initWithDictionary:dictionary[@"thumbnail"]];
+
     }
 
     return self;
