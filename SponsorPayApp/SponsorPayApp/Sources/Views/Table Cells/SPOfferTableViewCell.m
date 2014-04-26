@@ -128,9 +128,9 @@
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTitleLabel]-(verticalSpace)-[_offerTypeLabel]" options:0 metrics:metrics views:views]];
 
     //
-    // Offer teaser: pin to bottom and under offer type
+    // Offer teaser: between image and payout label, pin to bottom and under offer type,
     //
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTeaserLabel]-(>=horizontalSpace)-[_offerPayoutLabel]" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTeaserLabel]-(horizontalSpace)-[_offerPayoutLabel]" options:0 metrics:metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTypeLabel]-(verticalSpace)-[_offerTeaserLabel]-(>=bottomSpace)-|" options:0 metrics:metrics views:views]];
 
     self.didUpdateConstraints = YES;
