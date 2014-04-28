@@ -32,6 +32,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 
 // data source
 @property(nonatomic, strong, readwrite) SPOfferResponse *offerResponse;
+@property(nonatomic, strong, readwrite) NSMutableArray *cumulatedOffers;
 @property(nonatomic, assign, readwrite) NSUInteger currentPage;
 
 @end
@@ -90,6 +91,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 
     // 1st page
     self.currentPage = SPOffersViewControllerFirstPageIndex;
+    self.cumulatedOffers = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -103,10 +105,10 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSUInteger numberOfRows = self.offerResponse.offers.count;
+    NSUInteger numberOfRows = self.cumulatedOffers.count;
 
     //
-    // add the loading cell
+    // add the loading cell if we are not displaying the last page
     //
     if (self.currentPage < self.offerResponse.pages)
     {
@@ -216,7 +218,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
     NSAssert([tableViewCell isKindOfClass:[SPOfferTableViewCell class]], @"%@ must be called a class of %@", NSStringFromSelector(@selector(configureCell:forIndexPath:)), NSStringFromClass([SPOfferTableViewCell class]));
 
     SPOfferTableViewCell *cell = (SPOfferTableViewCell *)tableViewCell;
-    SPOffer *offer = self.offerResponse.offers[(NSUInteger)indexPath.row];
+    SPOffer *offer = self.cumulatedOffers[(NSUInteger)indexPath.row];
     cell.offerImageView.image = [UIImage imageNamed:@"cellTestImage"];
     cell.offerTitleLabel.text = offer.title;
     cell.offerTeaserLabel.text = offer.teaser;
@@ -239,26 +241,6 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
     }];
 }
 
-- (UITableViewCell *)loadingCell
-{
-    UITableViewCell *cell = [[UITableViewCell alloc]
-                             initWithStyle:UITableViewCellStyleDefault
-                             reuseIdentifier:nil];
-
-    UIActivityIndicatorView *activityIndicator =
-        [[UIActivityIndicatorView alloc]
-         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-
-    activityIndicator.center = cell.center;
-    [cell addSubview:activityIndicator];
-
-    [activityIndicator startAnimating];
-
-    cell.tag = SPOffersViewControllerLoadingCellTag;
-
-    return cell;
-}
-
 /**
  * Resets the current page and loads the data
  */
@@ -272,6 +254,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 {
     [[SPSDKManager sharedManager] listOffersPage:self.currentPage completion:^(SPOfferResponse *offerResponse) {
         self.offerResponse = offerResponse;
+        [self.cumulatedOffers addObjectsFromArray:offerResponse.offers];
         dispatch_async(dispatch_get_main_queue(), ^{
                 [self.refreshControl endRefreshing];
                 [self.tableView reloadData];
@@ -288,7 +271,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 
 - (BOOL)isIndexOfLoadingCell:(NSIndexPath *)indexPath
 {
-    return indexPath.row >= self.offerResponse.offers.count;
+    return indexPath.row >= self.cumulatedOffers.count;
 }
 
 @end
