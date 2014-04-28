@@ -6,12 +6,13 @@
 #import <Foundation/Foundation.h>
 
 @class SPOfferResponse;
+@class SPCredentials;
 
 typedef void (^SPOfferCompletionBlock) (SPOfferResponse *offerResponse);
 
 @interface SPOfferClient : NSObject
 
-- (instancetype)initWithApplicationId:(NSString *)applicationId userId:(NSString *)userId apiKey:(NSString *)apiKey;
+- (instancetype)initWithCredentials:(SPCredentials *)credentials;
 
 /**
  *  Fetches the list if the Offers

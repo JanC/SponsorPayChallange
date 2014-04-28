@@ -6,15 +6,15 @@
 #import "SPSDKManager.h"
 #import "SPOfferClient.h"
 #import "SPURLGenerator.h"
+#import "SPCredentials.h"
 
 @interface SPSDKManager ()
 
 //
 // API credentials
 //
-@property(nonatomic, copy, readwrite) NSString *applicationId;
-@property(nonatomic, copy, readwrite) NSString *userId;
-@property(nonatomic, copy, readwrite) NSString *apiKey;
+
+@property(nonatomic, strong, readwrite) SPCredentials *credentials;
 
 //
 // Network client
@@ -45,11 +45,9 @@
     apiKey:(NSString *)apiKey
 {
 
-    self.applicationId = applicationId;
-    self.userId = userId;
-    self.apiKey = apiKey;
+    self.credentials = [[SPCredentials alloc] initWithApplicationId:applicationId userId:userId apiKey:apiKey];
 
-    self.offerClient = [[SPOfferClient alloc] initWithApplicationId:applicationId userId:userId apiKey:apiKey];
+    self.offerClient = [[SPOfferClient alloc] initWithCredentials:self.credentials];
 
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		19A171369093C00D1F073E60 /* SPOfferType.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A174A1778410C6442B77E4 /* SPOfferType.m */; };
 		19A17172D414C6F7455A0CAB /* SPOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17F4437A2C89F5295266C /* SPOffer.m */; };
+		19A17474ABFD06C236717FD4 /* SPCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17BA69B4ECFFF63D69151 /* SPCredentials.m */; };
 		19A17628368D5342E069469C /* SPSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A173121AA4BF19C917FA30 /* SPSDKManager.m */; };
 		19A176AF1D1FA72AACF51FA0 /* SPSHA1Signer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17F21AFAB19C73603AD92 /* SPSHA1Signer.m */; };
 		19A176F518DBA77CB0F4D592 /* SPTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A177434A997FB450E9F614 /* SPTime.m */; };
@@ -64,6 +65,7 @@
 		19A172D02841FC494F6D726A /* SPURLGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPURLGenerator.h; sourceTree = "<group>"; };
 		19A172E37A999DBDD349E704 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = response.json; sourceTree = "<group>"; };
 		19A173121AA4BF19C917FA30 /* SPSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSDKManager.m; sourceTree = "<group>"; };
+		19A17340A5586E5BC506BBF0 /* SPCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCredentials.h; sourceTree = "<group>"; };
 		19A17452FAC469449BB42B17 /* SPOfferResponseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferResponseInformation.m; sourceTree = "<group>"; };
 		19A174A0ABD555670661CECF /* SPSDKManager+Dummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPSDKManager+Dummy.h"; sourceTree = "<group>"; };
 		19A174A1778410C6442B77E4 /* SPOfferType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferType.m; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		19A178C14F86CCB930A984B8 /* SPOfferClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferClient.h; sourceTree = "<group>"; };
 		19A17A73F02BE2E34FFB60E2 /* SPOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOffer.h; sourceTree = "<group>"; };
 		19A17B67061DD5E342502D24 /* SPSDKManager+Dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPSDKManager+Dummy.m"; sourceTree = "<group>"; };
+		19A17BA69B4ECFFF63D69151 /* SPCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCredentials.m; sourceTree = "<group>"; };
 		19A17BB2555A0E35240C51D0 /* SPTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTime.h; sourceTree = "<group>"; };
 		19A17D4BF0C3DBA76178CF57 /* SPDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDataParser.h; sourceTree = "<group>"; };
 		19A17E00784D4A328FB8FF3B /* SponsorPaySDKNetworkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorPaySDKNetworkTests.m; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 				19A17B67061DD5E342502D24 /* SPSDKManager+Dummy.m */,
 				19A17F9307B3725AA36A1283 /* SPSDKManager.h */,
 				19A173121AA4BF19C917FA30 /* SPSDKManager.m */,
+				19A17BA69B4ECFFF63D69151 /* SPCredentials.m */,
+				19A17340A5586E5BC506BBF0 /* SPCredentials.h */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				19A17D7066B690726A8BFD6D /* SPSDKManager+Dummy.m in Sources */,
 				19A17FC8C5554A00C2E016CA /* SPURLGenerator.m in Sources */,
 				19A176AF1D1FA72AACF51FA0 /* SPSHA1Signer.m in Sources */,
+				19A17474ABFD06C236717FD4 /* SPCredentials.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,7 +50,7 @@ extern NSString *const SPURLOffersParamTimeStamp;
     //
 
 
-    SPURLGenerator *urlGenerator = [[SPURLGenerator alloc] initWithApplicationId:@"MyAppId" userId:@"MyUserId" apiKey:@"MyAPIKey" signer:nil ];
+    SPURLGenerator *urlGenerator = [[SPURLGenerator alloc] initWithCredentials:@"MyAppId" signer:nil ];
 
     NSDictionary *customParameters = @{
             @"myCustomKey" : @"myCustomValue"

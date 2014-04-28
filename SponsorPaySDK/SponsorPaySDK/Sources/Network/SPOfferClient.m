@@ -10,6 +10,7 @@
 #import "SPURLGenerator.h"
 #import "SPSigner.h"
 #import "SPSHA1Signer.h"
+#import "SPCredentials.h"
 
 #pragma mark - Constants
 
@@ -19,9 +20,8 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
 
 @interface SPOfferClient ()
 
-@property(nonatomic, copy, readwrite) NSString *applicationId;
-@property(nonatomic, copy, readwrite) NSString *userId;
-@property(nonatomic, copy, readwrite) NSString *apiKey;
+@property(nonatomic, strong, readwrite) SPCredentials *credentials;
+
 
 @property(nonatomic, strong) NSURLSession *urlSession;
 
@@ -36,15 +36,12 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
 
 #pragma mark - Public
 
-- (instancetype)initWithApplicationId:(NSString *)applicationId userId:(NSString *)userId apiKey:(NSString *)apiKey
-{
+- (instancetype)initWithCredentials:(SPCredentials *)credentials {
     self = [super init];
 
     if (self)
     {
-        self.applicationId = applicationId;
-        self.userId = userId;
-        self.apiKey = apiKey;
+        self.credentials = credentials;
 
         //
         // Setup network
@@ -69,7 +66,7 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
         //
 
         self.requestSigner = [[SPSHA1Signer alloc] init];
-        self.urlGenerator = [[SPURLGenerator alloc] initWithApplicationId:applicationId userId:userId apiKey:apiKey signer: self.requestSigner];
+        self.urlGenerator = [[SPURLGenerator alloc] initWithCredentials:credentials signer:self.requestSigner];
 
     }
 
@@ -104,7 +101,7 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
             // Verify response signature
             //
             NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            BOOL isValid = [self.requestSigner signatureValid:responseSignature forText:responseString secretToken:self.apiKey];
+            BOOL isValid = [self.requestSigner signatureValid:responseSignature forText:responseString secretToken:self.credentials.apiKey];
             if(!isValid)
             {
                 NSLog(@"Response signature %@ is not valid", responseSignature);

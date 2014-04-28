@@ -19,7 +19,7 @@
 NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
 NSString *const SPOffersViewControllerLoadingCellId = @"SPOffersViewControllerLoadingCellId";
 
-static NSUInteger const SPOffersViewControllerLoadingCellTag = 1;
+
 static CGFloat const SPOffersViewControllerLoadingCellHeight = 40.0;
 
 // The number of the 1st page from the API

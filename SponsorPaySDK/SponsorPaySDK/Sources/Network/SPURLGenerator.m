@@ -7,6 +7,7 @@
 #import "SPURLGenerator.h"
 #import "SPSigner.h"
 #import "SPSHA1Signer.h"
+#import "SPCredentials.h"
 #import <AdSupport/AdSupport.h>
 
 #pragma mark - Constant Parameter names
@@ -28,9 +29,8 @@ NSString *const SPURLOffersParamMacDevice = @"device";
 
 @interface SPURLGenerator ()
 
-@property(nonatomic, copy, readwrite) NSString *applicationId;
-@property(nonatomic, copy, readwrite) NSString *userId;
-@property(nonatomic, copy, readwrite) NSString *apiKey;
+
+@property(nonatomic, strong, readwrite) SPCredentials *credentials;
 
 @property(nonatomic, strong, readwrite) NSMutableDictionary *parameters;
 @property(nonatomic, strong, readwrite) id <SPSigner> requestSigner;
@@ -41,18 +41,16 @@ NSString *const SPURLOffersParamMacDevice = @"device";
 
 }
 
-- (instancetype)initWithApplicationId:(NSString *)applicationId userId:(NSString *)userId apiKey:(NSString *)apiKey signer:(id <SPSigner>)signer
-{
+- (instancetype)initWithCredentials:(SPCredentials *)credentials signer:(id <SPSigner>)signer {
     self = [super init];
 
     if (self) {
-        self.applicationId = applicationId;
-        self.userId = userId;
-        self.apiKey = apiKey;
+        self.credentials = credentials;
+
 
         self.parameters = [@{
-                SPURLOffersParamAppId : self.applicationId,
-                SPURLOffersParamUid : self.userId,
+                SPURLOffersParamAppId : self.credentials.applicationId,
+                SPURLOffersParamUid : self.credentials.userId,
                 SPURLOffersParamOsVersion : [[UIDevice currentDevice] systemVersion],
                 SPURLOffersParamAppleIdFa : [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],
         } mutableCopy];
@@ -76,7 +74,7 @@ NSString *const SPURLOffersParamMacDevice = @"device";
     //
     if(self.requestSigner)
     {
-        NSString *signature = [self.requestSigner signText:urlString withSecretToken:self.apiKey];
+        NSString *signature = [self.requestSigner signText:urlString withSecretToken:self.credentials.apiKey];
         urlString = [NSString stringWithFormat:@"%@&%@=%@", urlString, SPURLOffersParamHashKey, signature];
     }
 
