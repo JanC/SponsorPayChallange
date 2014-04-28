@@ -11,5 +11,9 @@
 @property (nonatomic, strong, readonly) UILabel *offerTitleLabel;
 @property (nonatomic, strong, readonly) UILabel *offerTeaserLabel;
 @property (nonatomic, strong, readonly) UILabel *offerPayoutLabel;
-@property (nonatomic, strong, readonly) UILabel *offerTypeLabel;
+
+
+@property(nonatomic, strong) NSDictionary *metrics;
+
+-(void) setOfferTypeTitles:(NSArray *)offerTypeTitles;
 @end
