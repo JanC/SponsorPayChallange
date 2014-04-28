@@ -8,7 +8,6 @@
 #import "UIFont+SPStyle.h"
 #import "SPOfferTypesView.h"
 
-
 @interface SPOfferTableViewCell ()
 
 @property(nonatomic, strong, readwrite) UIImageView *offerImageView;
@@ -28,6 +27,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+
     if ( self )
     {
 
@@ -63,7 +63,6 @@
         self.offerTeaserLabel.font = [UIFont SPTableViewCellOfferTeaserFont];
         self.offerPayoutLabel.font = [UIFont SPTableViewCellOfferPayoutFont];
 
-
         //
         // Prepare auto layout
         //
@@ -78,14 +77,14 @@
         [self.contentView addSubview:self.offerPayoutLabel];
 
         self.metrics = @{
-                @"topSpace" : @10,
-                @"bottomSpace" : @10,
-                @"rightSpace" : @10,
-                @"horizontalSpace" : @10,
-                @"verticalSpace" : @5,
-                @"payoutLabelWidth" : @60,
-                @"imageViewWidth" : @60,
-                @"imageViewHeight" : @60
+            @"topSpace" : @10,
+            @"bottomSpace" : @10,
+            @"rightSpace" : @10,
+            @"horizontalSpace" : @10,
+            @"verticalSpace" : @5,
+            @"payoutLabelWidth" : @60,
+            @"imageViewWidth" : @60,
+            @"imageViewHeight" : @60
         };
     }
 
@@ -102,7 +101,6 @@
     }
 
     NSDictionary *views = NSDictionaryOfVariableBindings(_offerImageView, _offerPayoutLabel, _offerTeaserLabel, _offerTitleLabel);
-
 
     //
     // Image View: pin to top left
@@ -130,9 +128,7 @@
 
     [self.offerTypesView removeFromSuperview];
 
-
     self.offerTypesView = [[SPOfferTypesView alloc] initWithOfferTypesTitles:offerTypeTitles];
-
 
     //
     // prepare auto layout
@@ -147,8 +143,6 @@
     //
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTypesView]-(horizontalSpace)-[_offerPayoutLabel]" options:0 metrics:self.metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTitleLabel]-(verticalSpace)-[_offerTypesView]" options:0 metrics:self.metrics views:views]];
-
-
 
     //
     // Offer teaser: between image and payout label, pin to bottom and under offer type,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19A170C918E7297B63E9603F /* SPLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A173B138A7F5D80A83F394 /* SPLoadingCell.m */; };
 		19A1718129D1619D004209B9 /* SPOfferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A178A618C75EA568F6DF9F /* SPOfferTableViewCell.m */; };
 		19A171853A72037548C516B2 /* SPOfferTypesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A179D8DB53488745EC2830 /* SPOfferTypesView.m */; };
 		19A171CA5D44E71CBB4D2338 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 19A1779169A09053F06DE811 /* response.json */; };
@@ -50,7 +51,8 @@
 		19A1706C138EE926A8878537 /* SPOfferTypesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferTypesView.h; sourceTree = "<group>"; };
 		19A171453AD78D940CFDCF71 /* UIColor+SPStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SPStyle.m"; sourceTree = "<group>"; };
 		19A1736AD0692F49F835442A /* SPOffersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOffersViewController.m; sourceTree = "<group>"; };
-		19A173A9F81B54EE54BDC0F4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		19A173A9F81B54EE54BDC0F4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Sources/Controllers/Localizable.strings; sourceTree = "<group>"; };
+		19A173B138A7F5D80A83F394 /* SPLoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLoadingCell.m; sourceTree = "<group>"; };
 		19A1751AEC0D62F51C9AAE94 /* SPOfferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferTableViewCell.h; sourceTree = "<group>"; };
 		19A17571C16C9A448B5E32CD /* SPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAppDelegate.m; sourceTree = "<group>"; };
 		19A176C096AF3A5F926EA0AD /* SPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		19A178A618C75EA568F6DF9F /* SPOfferTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferTableViewCell.m; sourceTree = "<group>"; };
 		19A179D8DB53488745EC2830 /* SPOfferTypesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferTypesView.m; sourceTree = "<group>"; };
 		19A17A38EEE3D52C8AF833CE /* SPOfferTypeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferTypeLabel.h; sourceTree = "<group>"; };
+		19A17ABCF2A02B6974F278A4 /* SPLoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLoadingCell.h; sourceTree = "<group>"; };
 		19A17C3B9034D4BBBD850F10 /* UIColor+SPStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SPStyle.h"; sourceTree = "<group>"; };
 		19A17CC287012F6838D1B2A1 /* SPOfferTypeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferTypeLabel.m; sourceTree = "<group>"; };
 		19A17CCB87C573A6102D2CE7 /* SPOffersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOffersViewController.h; sourceTree = "<group>"; };
@@ -133,9 +136,8 @@
 			children = (
 				19A17CCB87C573A6102D2CE7 /* SPOffersViewController.h */,
 				19A1736AD0692F49F835442A /* SPOffersViewController.m */,
-				19A17F16FAB6BE8CEBC218FA /* SPSettingsViewController.m */,
 				19A17CD601A75B0D0E001F5C /* SPSettingsViewController.h */,
-				19A173A9F81B54EE54BDC0F4 /* Localizable.strings */,
+				19A17F16FAB6BE8CEBC218FA /* SPSettingsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -143,6 +145,7 @@
 		19A17719BE1C408C085E3997 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				19A173A9F81B54EE54BDC0F4 /* Localizable.strings */,
 				3DB92DE319082E27009124AE /* Images.xcassets */,
 				19A1797BD2E864B461A8E74B /* Test Files */,
 			);
@@ -163,8 +166,8 @@
 			children = (
 				19A17E6C9CB3EE30496AF1CD /* Table Cells */,
 				19A17BD8561F9495AC5B3AD0 /* Labels */,
-				19A179D8DB53488745EC2830 /* SPOfferTypesView.m */,
 				19A1706C138EE926A8878537 /* SPOfferTypesView.h */,
+				19A179D8DB53488745EC2830 /* SPOfferTypesView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +215,8 @@
 			children = (
 				19A1751AEC0D62F51C9AAE94 /* SPOfferTableViewCell.h */,
 				19A178A618C75EA568F6DF9F /* SPOfferTableViewCell.m */,
+				19A173B138A7F5D80A83F394 /* SPLoadingCell.m */,
+				19A17ABCF2A02B6974F278A4 /* SPLoadingCell.h */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				19A17A264EF9861C3192E34B /* SPOfferTypeLabel.m in Sources */,
 				19A171853A72037548C516B2 /* SPOfferTypesView.m in Sources */,
 				19A17C77852621C0C1918DC0 /* SPSettingsViewController.m in Sources */,
+				19A170C918E7297B63E9603F /* SPLoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

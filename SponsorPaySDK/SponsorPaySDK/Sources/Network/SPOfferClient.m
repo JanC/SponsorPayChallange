@@ -93,7 +93,7 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
     NSURLSessionTask *sessionTask = [self.urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSLog(@"Received HTTP %d", httpResponse.statusCode);
+        NSLog(@"Received HTTP %ld", (long)httpResponse.statusCode);
         if (httpResponse.statusCode == 200)
         {
 

@@ -6,7 +6,6 @@
 #import "SPSettingsViewController.h"
 #import "SPOffersViewController.h"
 
-
 @interface SPSettingsViewController ()
 @property(nonatomic, strong) UITextField *apiKeyTextField;
 @property(nonatomic, strong) UITextField *userIdTextField;
@@ -18,18 +17,21 @@
 
 }
 
-- (id)init {
+- (id)init
+{
     self = [super init];
-    if (self) {
+
+    if (self)
+    {
         self.title = NSLocalizedString(@"Settings", @"Settings");
     }
 
     return self;
 }
 
-- (void)loadView {
+- (void)loadView
+{
     [super loadView];
-
 
     //
     // Setup text fields
@@ -43,11 +45,9 @@
     self.apiKeyTextField = [[UITextField alloc] init];
     self.apiKeyTextField.placeholder = NSLocalizedString(@"API Key", @"API Key");
 
-
     self.showOffersButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.showOffersButton setTitle:NSLocalizedString(@"Show offers", @"Show offers") forState:UIControlStateNormal];
     [self.showOffersButton addTarget:self action:@selector(showOffersButtonTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
-
 
     //
     // Style
@@ -55,7 +55,6 @@
     self.applicationIdTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.userIdTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.apiKeyTextField.borderStyle = UITextBorderStyleRoundedRect;
-
 
     //
     // Prepare auto layout
@@ -66,10 +65,10 @@
     self.apiKeyTextField.translatesAutoresizingMaskIntoConstraints = NO;
     self.showOffersButton.translatesAutoresizingMaskIntoConstraints = NO;
 
-    [self.view addSubview: self.applicationIdTextField];
-    [self.view addSubview: self.userIdTextField];
-    [self.view addSubview: self.apiKeyTextField];
-    [self.view addSubview: self.showOffersButton];
+    [self.view addSubview:self.applicationIdTextField];
+    [self.view addSubview:self.userIdTextField];
+    [self.view addSubview:self.apiKeyTextField];
+    [self.view addSubview:self.showOffersButton];
 
     //
     // Auto layout
@@ -77,7 +76,7 @@
     id topLayoutGuide = self.topLayoutGuide;
     NSDictionary *views = NSDictionaryOfVariableBindings(topLayoutGuide, _applicationIdTextField, _userIdTextField, _apiKeyTextField, _showOffersButton);
     NSDictionary *metrics = @{
-            @"spacing" : @20
+        @"spacing" : @20
     };
 
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_applicationIdTextField]-|"
@@ -107,15 +106,15 @@
 
 }
 
-
 #pragma mark - Actions -
 
-- (void)showOffersButtonTouchedUpInside:(id)sender {
+- (void)showOffersButtonTouchedUpInside:(id)sender
+{
 
     //
     // Validate
     //
-    if(![self isFormValid])
+    if (![self isFormValid])
     {
 
     }
@@ -124,16 +123,14 @@
         [self.navigationController pushViewController:[[SPOffersViewController alloc] init] animated:YES];
     }
 
-
 }
 
 #pragma mark - Private -
 
--(BOOL) isFormValid
+- (BOOL)isFormValid
 {
     return YES;
 
 }
-
 
 @end
