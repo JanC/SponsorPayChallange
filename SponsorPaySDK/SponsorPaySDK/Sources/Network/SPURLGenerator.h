@@ -8,6 +8,7 @@
 @protocol SPSigner;
 
 extern NSString *const SPURLOffersParamPage;
+extern NSString *const SPURLOffersParamOfferTypes;
 
 @interface SPURLGenerator : NSObject
 

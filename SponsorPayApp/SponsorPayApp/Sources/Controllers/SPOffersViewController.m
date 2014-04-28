@@ -146,6 +146,12 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+}
+
+
 #pragma mark - Private -
 
 - (void)configureCell:(SPOfferTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
