@@ -5,7 +5,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class SPCredentials;
+
 
 @interface SPSettingsViewController : UIViewController
 
+- (id)initWithCredentials:(SPCredentials *) credentials;
 @end

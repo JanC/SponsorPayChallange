@@ -5,25 +5,30 @@
 
 #import "SPSettingsViewController.h"
 #import "SPOffersViewController.h"
+#import "SPCredentials.h"
+#import "SPSDKManager.h"
 
 @interface SPSettingsViewController ()
 @property(nonatomic, strong) UITextField *apiKeyTextField;
 @property(nonatomic, strong) UITextField *userIdTextField;
 @property(nonatomic, strong) UITextField *applicationIdTextField;
 @property(nonatomic, strong) UIButton *showOffersButton;
+
+@property (nonatomic, strong) SPCredentials *credentials;
 @end
 
 @implementation SPSettingsViewController {
 
 }
 
-- (id)init
+- (id)initWithCredentials:(SPCredentials *) credentials
 {
     self = [super init];
 
     if (self)
     {
         self.title = NSLocalizedString(@"Settings", @"Settings");
+        self.credentials = credentials;
     }
 
     return self;
@@ -69,6 +74,17 @@
     [self.view addSubview:self.userIdTextField];
     [self.view addSubview:self.apiKeyTextField];
     [self.view addSubview:self.showOffersButton];
+
+    //
+    // Fill saved credentials
+    //
+
+    if(self.credentials)
+    {
+        self.apiKeyTextField.text = self.credentials.apiKey;
+        self.userIdTextField.text = self.credentials.userId;
+        self.applicationIdTextField.text = self.credentials.applicationId;
+    }
 
     //
     // Auto layout
@@ -120,6 +136,9 @@
     }
     else
     {
+        [[SPSDKManager sharedManager] setupForApplicationId:self.applicationIdTextField.text
+                                                     userId:self.userIdTextField.text apiKey:self.apiKeyTextField.text];
+
         [self.navigationController pushViewController:[[SPOffersViewController alloc] init] animated:YES];
     }
 

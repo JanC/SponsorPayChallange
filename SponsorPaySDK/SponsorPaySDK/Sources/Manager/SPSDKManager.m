@@ -49,6 +49,11 @@
 
     self.offerClient = [[SPOfferClient alloc] initWithCredentials:self.credentials];
 
+    //
+    // Save Credentials
+    //
+    [self saveCredentials:self.credentials];
+
 }
 
 - (NSURLSessionTask *)listOffersPage:(NSUInteger)page completion:(SPOfferCompletionBlock)completion {
@@ -76,6 +81,34 @@
         }
 
     }];
+}
+
+#pragma mark - Private -
+
+-(void) saveCredentials:(SPCredentials *)credentials {
+    NSDictionary *dictionary = @{
+            @"applicationId" : credentials.applicationId,
+            @"userId" : credentials.userId,
+            @"apiKey" : credentials.apiKey,
+    };
+
+    [[NSUserDefaults standardUserDefaults] setObject:dictionary forKey:@"SPCredentials"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
+- (SPCredentials *)loadCredentials
+{
+    SPCredentials *credentials;
+    NSDictionary *dictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"SPCredentials"];
+    if (dictionary) {
+        credentials = [[SPCredentials alloc] initWithApplicationId:dictionary[@"applicationId"]
+                                                            userId:dictionary[@"userId"]
+                                                            apiKey:dictionary[@"apiKey"]];
+    }
+
+    return credentials;
+
 }
 
 @end

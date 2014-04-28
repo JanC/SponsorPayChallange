@@ -14,5 +14,10 @@
     userId:(NSString *)userId
     apiKey:(NSString *)apiKey;
 
+/**
+* If any, returns saved credentials. Nil if no saved data
+*/
+- (SPCredentials *)loadCredentials;
+
 - (NSURLSessionTask *)listOffersPage:(NSUInteger)page completion:(SPOfferCompletionBlock)completion;
 @end

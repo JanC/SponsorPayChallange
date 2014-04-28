@@ -10,6 +10,7 @@
 #import "SPSDKManager.h"
 #import "SPOffersViewController.h"
 #import "SPSettingsViewController.h"
+#import "SPCredentials.h"
 
 @implementation SPAppDelegate
 
@@ -18,13 +19,16 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    [[SPSDKManager sharedManager] setupForApplicationId:@"2070" userId:@"spiderman" apiKey:@"1c915e3b5d42d05136185030892fbb846c278927"];
+    //[[SPSDKManager sharedManager] setupForApplicationId:@"2070" userId:@"spiderman" apiKey:@"1c915e3b5d42d05136185030892fbb846c278927"];
 
-    UIViewController *firstViewController = [[SPOffersViewController alloc] init];
-    UIViewController *settingsViewController = [[SPSettingsViewController alloc] init];
+    SPCredentials *credentials = [[SPSDKManager sharedManager] loadCredentials];
+
+
+    UIViewController *settingsViewController = [[SPSettingsViewController alloc] initWithCredentials:credentials];
 
     UINavigationController *navigationController = [[UINavigationController alloc] init];
-    navigationController.viewControllers = @[settingsViewController, firstViewController];
+
+    navigationController.viewControllers = @[settingsViewController];
     self.window.rootViewController = navigationController;
 
     self.window.backgroundColor = [UIColor whiteColor];
