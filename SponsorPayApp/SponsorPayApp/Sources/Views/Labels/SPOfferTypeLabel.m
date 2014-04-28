@@ -21,6 +21,7 @@ static const NSInteger SPOfferTypeLabelHorizontalTextInset = 5;
     self = [super initWithFrame:frame];
     if (self) {
         self.edgeInsets = UIEdgeInsetsMake(0, SPOfferTypeLabelHorizontalTextInset, 0, SPOfferTypeLabelHorizontalTextInset);
+        self.textAlignment = NSTextAlignmentCenter;
     }
     return self;
 }
@@ -30,11 +31,11 @@ static const NSInteger SPOfferTypeLabelHorizontalTextInset = 5;
 {
     return CGRectInset([self.attributedText boundingRectWithSize:CGSizeMake(999, 999)
                                                          options:NSStringDrawingUsesLineFragmentOrigin
-                                                         context:nil], -SPOfferTypeLabelHorizontalTextInset, 0);
+                                                         context:nil], -SPOfferTypeLabelHorizontalTextInset, -1);
 }
 
-- (void)drawTextInRect:(CGRect)rect {
-    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.edgeInsets)];
-}
+//- (void)drawTextInRect:(CGRect)rect {
+//    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.edgeInsets)];
+//}
 
 @end
