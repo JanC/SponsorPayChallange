@@ -8,6 +8,8 @@
 #import "SPJSONDataParser.h"
 #import "SPOfferResponse.h"
 #import "SPURLGenerator.h"
+#import "SPSigner.h"
+#import "SPSHA1Signer.h"
 
 #pragma mark - Constants
 
@@ -25,6 +27,7 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
 
 @property(nonatomic, strong) id <SPDataParser> dataParser;
 @property (nonatomic, strong) SPURLGenerator *urlGenerator;
+@property(nonatomic, strong, readwrite) id <SPSigner> requestSigner;
 @end
 
 @implementation SPOfferClient {
@@ -47,6 +50,13 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
         // Setup network
         //
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        // Keep-Alive
+        sessionConfiguration.HTTPAdditionalHeaders = @{
+                @"Connection" : @"Keep-Alive",
+                @"TestHeader" : @"Test Value"
+
+        };
+
         self.urlSession = [NSURLSession sessionWithConfiguration:sessionConfiguration];
 
         //
@@ -57,7 +67,9 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
         //
         // Setup URL Generator and response verifier
         //
-        self.urlGenerator = [[SPURLGenerator alloc] initWithApplicationId:applicationId userId:userId apiKey:apiKey];
+
+        self.requestSigner = [[SPSHA1Signer alloc] init];
+        self.urlGenerator = [[SPURLGenerator alloc] initWithApplicationId:applicationId userId:userId apiKey:apiKey signer: self.requestSigner];
 
     }
 
@@ -84,6 +96,20 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
         NSLog(@"Received HTTP %d", httpResponse.statusCode);
         if (httpResponse.statusCode == 200)
         {
+
+            NSDictionary *headers = [httpResponse allHeaderFields];
+            NSString *responseSignature = headers[@"X-Sponsorpay-Response-Signature"];
+
+            //
+            // Verify response signature
+            //
+            NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            BOOL isValid = [self.requestSigner signatureValid:responseSignature forText:responseString secretToken:self.apiKey];
+            if(!isValid)
+            {
+                NSLog(@"Response signature %@ is not valid", responseSignature);
+            }
+
             SPOfferResponse * offerResponse = [self.dataParser parseOfferListResponse:data];
             if(completion)
             {

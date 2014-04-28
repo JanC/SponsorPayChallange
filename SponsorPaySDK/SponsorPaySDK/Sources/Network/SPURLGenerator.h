@@ -5,11 +5,13 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol SPSigner;
+
 extern NSString *const SPURLOffersParamPage;
 
 @interface SPURLGenerator : NSObject
 
-- (instancetype)initWithApplicationId:(NSString *)applicationId userId:(NSString *)userId apiKey:(NSString *)apiKey;
+- (instancetype)initWithApplicationId:(NSString *)applicationId userId:(NSString *)userId apiKey:(NSString *)apiKey signer:(id <SPSigner>)signer;
 
 
 /**

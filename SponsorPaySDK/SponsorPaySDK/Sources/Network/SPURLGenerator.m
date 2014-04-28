@@ -41,7 +41,8 @@ NSString *const SPURLOffersParamMacDevice = @"device";
 
 }
 
-- (instancetype)initWithApplicationId:(NSString *)applicationId userId:(NSString *)userId apiKey:(NSString *)apiKey {
+- (instancetype)initWithApplicationId:(NSString *)applicationId userId:(NSString *)userId apiKey:(NSString *)apiKey signer:(id <SPSigner>)signer
+{
     self = [super init];
 
     if (self) {
@@ -56,13 +57,13 @@ NSString *const SPURLOffersParamMacDevice = @"device";
                 SPURLOffersParamAppleIdFa : [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],
         } mutableCopy];
 
-        self.requestSigner = [[SPSHA1Signer alloc] init];
+        self.requestSigner = signer;
     }
 
     return self;
 }
 
-- (NSString *)offersURLWithParameters:(NSDictionary *)params {
+- (NSString *)offersURLWithParameters:(NSDictionary *)params  {
     //
     // http://api.sponsorpay.com/feed/v1/offers.json?appid=[APP_ID]&uid=[USER_ID]&ip=[IP_ADDRESS]&locale=[LOCALE]&device_id=[DEVICE_ID]&ps_time=[TIMESTAMP]&pub0=[CUSTOM]&timestamp=[UNIX_TIMESTAMP]&offer_types=[OFFER_TYPES]&android_id=[ANDROID_ID]&hashkey=[HASHKEY]
     //
@@ -73,8 +74,11 @@ NSString *const SPURLOffersParamMacDevice = @"device";
     //
     // Create the hash of all parameters and append it as "hashkey" parameter
     //
-    NSString *signature = [self.requestSigner signText:urlString withSecretToken:self.apiKey];
-    urlString = [NSString stringWithFormat:@"%@&%@=%@", urlString, SPURLOffersParamHashKey, signature];
+    if(self.requestSigner)
+    {
+        NSString *signature = [self.requestSigner signText:urlString withSecretToken:self.apiKey];
+        urlString = [NSString stringWithFormat:@"%@&%@=%@", urlString, SPURLOffersParamHashKey, signature];
+    }
 
     return urlString;
 }
