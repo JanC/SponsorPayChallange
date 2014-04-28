@@ -20,6 +20,9 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
 @interface SPOffersViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong, readwrite) UITableView *tableView;
+@property(nonatomic, strong) UIRefreshControl *refreshControl;
+
+// data source
 @property (nonatomic, strong, readwrite) NSArray *offersArray;
 
 @end
@@ -55,6 +58,13 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
     self.tableView.dataSource = self;
 
     [self.view addSubview:self.tableView];
+    
+    //
+    // Setup refresh control
+    //
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 
     //
     // Auto Layout for Table View
@@ -69,16 +79,11 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
                                                                         views:viewDictionary]];
 }
 
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    [[SPSDKManager sharedManager] listOffersPage:0 completion:^(SPOfferResponse *offerResponse) {
-        self.offersArray = offerResponse.offers;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-
-    }];
+    [self handleRefresh:nil];
 }
 
 
@@ -164,6 +169,17 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
         [UIView animateWithDuration:cacheType == SDImageCacheTypeNone ? 1.0:0.0 animations:^{
             weakCell.offerImageView.alpha = 1;
         }];
+    }];
+}
+
+- (void)handleRefresh:(id)handleRefresh {
+    [[SPSDKManager sharedManager] listOffersPage:0 completion:^(SPOfferResponse *offerResponse) {
+        self.offersArray = offerResponse.offers;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.refreshControl endRefreshing];
+            [self.tableView reloadData];
+            
+        });
     }];
 }
 
