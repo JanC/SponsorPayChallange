@@ -6,9 +6,8 @@
 #import "SPOfferTableViewCell.h"
 #import "UIColor+SPStyle.h"
 #import "UIFont+SPStyle.h"
-#import "SPOfferTypeLabel.h"
 #import "SPOfferTypesView.h"
-#import <QuartzCore/QuartzCore.h>
+
 
 @interface SPOfferTableViewCell ()
 
@@ -22,14 +21,15 @@
 
 @end
 
-
-@implementation SPOfferTableViewCell {
-
+@implementation SPOfferTableViewCell
+{
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+    if ( self )
+    {
 
         //
         // Init subviews
@@ -47,6 +47,7 @@
         self.offerPayoutLabel.layer.masksToBounds = YES;
 
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.imageView.clipsToBounds = YES;
 
         //
         // Style
@@ -58,7 +59,7 @@
         self.offerPayoutLabel.backgroundColor = [UIColor SPTableViewCellOfferPayoutBackgroundColor];
 
         self.offerTitleLabel.font = [UIFont SPTableViewCellOfferTitleFont];
-        
+
         self.offerTeaserLabel.font = [UIFont SPTableViewCellOfferTeaserFont];
         self.offerPayoutLabel.font = [UIFont SPTableViewCellOfferPayoutFont];
 
@@ -70,7 +71,6 @@
         self.offerTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.offerTeaserLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.offerPayoutLabel.translatesAutoresizingMaskIntoConstraints = NO;
-
 
         [self.contentView addSubview:self.offerImageView];
         [self.contentView addSubview:self.offerTitleLabel];
@@ -86,20 +86,18 @@
                 @"payoutLabelWidth" : @60,
                 @"imageViewWidth" : @60,
                 @"imageViewHeight" : @60
-
         };
-
-
-
     }
 
     return self;
 }
 
-- (void)updateConstraints {
+- (void)updateConstraints
+{
     [super updateConstraints];
 
-    if (self.didUpdateConstraints) {
+    if ( self.didUpdateConstraints )
+    {
         return;
     }
 
@@ -124,41 +122,40 @@
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerPayoutLabel(payoutLabelWidth)]-(rightSpace)-|" options:0 metrics:self.metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTitleLabel]-[_offerPayoutLabel]" options:0 metrics:self.metrics views:views]];
 
+    self.didUpdateConstraints = YES;
+}
+
+- (void)setOfferTypeTitles:(NSArray *)offerTypeTitles
+{
+
+    [self.offerTypesView removeFromSuperview];
+
+
+    self.offerTypesView = [[SPOfferTypesView alloc] initWithOfferTypesTitles:offerTypeTitles];
+
+
+    //
+    // prepare auto layout
+    //
+    self.offerTypesView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:self.offerTypesView];
+
+    NSDictionary *views = NSDictionaryOfVariableBindings(_offerTitleLabel, _offerTypesView, _offerImageView, _offerPayoutLabel, _offerTeaserLabel);
+
+    //
+    // Offer types e.g. "Task, Free, App"
+    //
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTypesView]-(horizontalSpace)-[_offerPayoutLabel]" options:0 metrics:self.metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTitleLabel]-(verticalSpace)-[_offerTypesView]" options:0 metrics:self.metrics views:views]];
+
+
 
     //
     // Offer teaser: between image and payout label, pin to bottom and under offer type,
     //
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTeaserLabel]-(horizontalSpace)-[_offerPayoutLabel]" options:0 metrics:self.metrics views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTypeLabel]-(verticalSpace)-[_offerTeaserLabel]-(>=bottomSpace)-|" options:0 metrics:self.metrics views:views]];
-
-    self.didUpdateConstraints = YES;
-
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTypesView]-(verticalSpace)-[_offerTeaserLabel]-(>=bottomSpace)-|" options:0 metrics:self.metrics views:views]];
 }
-
-- (void)setOfferTypeTitles:(NSArray *)offerTypeTitles {
-    [self.offerTypesView removeFromSuperview];
-
-    if ( offerTypeTitles.count > 0 )
-    {
-        self.offerTypesView = [[SPOfferTypesView alloc] initWithOfferTypesTitles:offerTypeTitles];
-
-
-        //
-        // prepare auto layout
-        //
-        self.offerTypesView.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.offerTypesView addSubview:self.offerTypesView];
-
-        //
-        // Offer types e.g. "Task, Free, App"
-        //
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_offerImageView]-[_offerTypeLabel]-(>=horizontalSpace)-[_offerPayoutLabel]" options:0 metrics:self.metrics views:views]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_offerTitleLabel]-(verticalSpace)-[_offerTypeLabel]" options:0 metrics:self.metrics views:views]];
-
-    }
-
-}
-
 
 - (void)layoutSubviews
 {
@@ -173,6 +170,5 @@
     // as this will allow the text to wrap correctly, and as a result allow the label to take on the correct height.
     self.offerTeaserLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.offerTeaserLabel.frame);
 }
-
 
 @end

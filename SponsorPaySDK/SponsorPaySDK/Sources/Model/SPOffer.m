@@ -37,4 +37,17 @@
 
     return self;
 }
+
+- (NSArray *)offerTypesTitles
+{
+    NSMutableArray *titles = [NSMutableArray array];
+    [self.offerTypes enumerateObjectsUsingBlock:^(SPOfferType * offerType, NSUInteger idx, BOOL *stop) {
+        if(![titles containsObject:offerType.readable])
+        {
+            [titles addObject:offerType.readable];
+        }
+    }];
+    return titles;
+}
+
 @end

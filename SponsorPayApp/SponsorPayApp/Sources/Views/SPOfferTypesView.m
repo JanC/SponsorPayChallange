@@ -8,26 +8,26 @@
 #import "UIColor+SPStyle.h"
 #import "UIFont+SPStyle.h"
 
+@interface SPOfferTypesView ()
 
-@interface SPOfferTypesView()
-
-@property (nonatomic, strong, readwrite) NSArray *labelViews;
+@property(nonatomic, strong, readwrite) NSArray *labelViews;
 @end
 
-@implementation SPOfferTypesView {
-
+@implementation SPOfferTypesView
+{
 }
 
--(instancetype) initWithOfferTypesTitles:(NSArray *) titles {
+- (instancetype)initWithOfferTypesTitles:(NSArray *)titles
+{
     self = [self init];
-    if(self)
+    if ( self )
     {
         //
         // Create and add buttons as subview
         //
         NSMutableArray *labelViews = [NSMutableArray array];
         [titles enumerateObjectsUsingBlock:^(NSString *buttonTitle, NSUInteger idx, BOOL *stop) {
-            UILabel *offerTypeLabel  = [[SPOfferTypeLabel alloc] initWithFrame:CGRectZero];
+            UILabel *offerTypeLabel = [[SPOfferTypeLabel alloc] initWithFrame:CGRectZero];
 
             //
             // Style
@@ -36,12 +36,14 @@
             offerTypeLabel.backgroundColor = [UIColor SPTableViewCellOfferTypeBackgroundColor];
             offerTypeLabel.font = [UIFont SPTableViewCellOfferTypeFont];
 
+            offerTypeLabel.text = buttonTitle;
+
             //
             //  prepare auto layout
             //
             offerTypeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-            [self addSubview:offerTypeLabel];
 
+            [self addSubview:offerTypeLabel];
             [labelViews addObject:offerTypeLabel];
         }];
 
@@ -50,7 +52,8 @@
     return self;
 }
 
-- (void)updateConstraints {
+- (void)updateConstraints
+{
     [super updateConstraints];
 
 
@@ -61,32 +64,44 @@
 
     NSMutableDictionary *metrics = [@{@"spacing" : @2} mutableCopy];
 
-
     [self.labelViews enumerateObjectsUsingBlock:^(UIView *labelView, NSUInteger idx, BOOL *stop) {
 
-
-        if(idx == 0 ) {
-            metrics[@"spacing"] = @0; // 1st view has no left spacing
-        }
-        //
-        // Center horizontally
-        //
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:labelView
-                                                              attribute:NSLayoutAttributeCenterY
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self
-                                                              attribute:NSLayoutAttributeCenterY
-                                                             multiplier:1
-                                                               constant:0]];
-        // pin to previous
+        // pin horizontally to superview or to previous label
+        NSString *constraint =  idx == 0 ? @"H:|[labelView]" : @"H:[previousView]-(spacing)-[labelView]";
         [self addConstraints:
                 [NSLayoutConstraint
-                        constraintsWithVisualFormat:@"V:[previousView]-(spacing)-[labelView]"
+                        constraintsWithVisualFormat:constraint
                                             options:0 metrics:metrics
-                                              views:@{@"previousView" : previousView, @"labelView" : labelView }]];
+                                              views:@{@"previousView" : previousView, @"labelView" : labelView}]];
+
+        [self addConstraints:
+                [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[labelView]|"
+                                                        options:0 metrics:nil
+                                                          views:@{@"labelView" : labelView} ]];
 
 
+        previousView = labelView;
     }];
+
+
+    // last one, pin to right, this dictates content size
+//    [self addConstraints:
+//            [NSLayoutConstraint constraintsWithVisualFormat:@"H:[labelView]|"
+//                                                    options:0 metrics:nil
+//                                                      views:@{@"labelView" : previousView}]];
+
+}
+
+- (CGSize)intrinsicContentSize
+{
+    if(self.labelViews.count == 0)
+    {
+        return [super intrinsicContentSize];
+    } else
+    {
+        UILabel *label = self.labelViews[0];
+        return CGSizeMake(UIViewNoIntrinsicMetric, label.intrinsicContentSize.height);
+    }
 
 }
 

@@ -22,4 +22,7 @@
 @property (nonatomic, strong, readonly) SPTime *timeToPayout;
 @property (nonatomic, strong, readonly) NSNumber *payout;
 
+// Helper that returns a list of unique offer type tiles
+@property (nonatomic, strong, readonly) NSArray *offerTypesTitles;
+
 @end

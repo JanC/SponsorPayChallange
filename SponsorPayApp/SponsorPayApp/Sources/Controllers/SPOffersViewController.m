@@ -148,7 +148,7 @@ NSString *const SPOffersViewControllerCellId = @"SPOffersViewControllerCellId";
     cell.offerImageView.image = [UIImage imageNamed:@"cellTestImage"];
     cell.offerTitleLabel.text = offer.title;
     cell.offerTeaserLabel.text = offer.teaser;
-    cell.offerTypeLabel.text = ((SPOfferType*) offer.offerTypes[0]).readable;
+    [cell setOfferTypeTitles: offer.offerTypesTitles ];
     cell.offerPayoutLabel.text = [offer.payout SPPayoutString];
 
     cell.offerImageView.alpha = 0;
