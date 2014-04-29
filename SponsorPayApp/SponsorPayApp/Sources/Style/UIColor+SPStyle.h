@@ -21,4 +21,6 @@
 + (UIColor *) SPTableViewCellOfferPayoutColor;
 + (UIColor *) SPTableViewCellOfferPayoutBackgroundColor;
 
++ (UIColor *)SPDestructiveColor;
+
 @end

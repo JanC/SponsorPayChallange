@@ -7,12 +7,14 @@
 #import "SPOffersViewController.h"
 #import "SPCredentials.h"
 #import "SPSDKManager.h"
+#import "UIColor+SPStyle.h"
 
 @interface SPSettingsViewController ()
 @property(nonatomic, strong) UITextField *apiKeyTextField;
 @property(nonatomic, strong) UITextField *userIdTextField;
 @property(nonatomic, strong) UITextField *applicationIdTextField;
 @property(nonatomic, strong) UIButton *showOffersButton;
+@property(nonatomic, strong) UIButton *fillDebugDataButton;
 
 @property (nonatomic, strong) SPCredentials *credentials;
 @end
@@ -54,6 +56,11 @@
     [self.showOffersButton setTitle:NSLocalizedString(@"Show offers", @"Show offers") forState:UIControlStateNormal];
     [self.showOffersButton addTarget:self action:@selector(showOffersButtonTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
 
+    self.fillDebugDataButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.fillDebugDataButton setTitleColor:[UIColor SPDestructiveColor] forState:UIControlStateNormal];
+    [self.fillDebugDataButton setTitle:NSLocalizedString(@"Use Sample Data", ) forState:UIControlStateNormal];
+    [self.fillDebugDataButton addTarget:self action:@selector(fillDataButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+
     //
     // Style
     //
@@ -69,11 +76,13 @@
     self.userIdTextField.translatesAutoresizingMaskIntoConstraints = NO;
     self.apiKeyTextField.translatesAutoresizingMaskIntoConstraints = NO;
     self.showOffersButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.fillDebugDataButton.translatesAutoresizingMaskIntoConstraints = NO;
 
     [self.view addSubview:self.applicationIdTextField];
     [self.view addSubview:self.userIdTextField];
     [self.view addSubview:self.apiKeyTextField];
     [self.view addSubview:self.showOffersButton];
+    [self.view addSubview:self.fillDebugDataButton];
 
     //
     // Fill saved credentials
@@ -86,11 +95,18 @@
         self.applicationIdTextField.text = self.credentials.applicationId;
     }
 
+
+    //
+    // Add debug button to fill the fields
+    //
+
+
+
     //
     // Auto layout
     //
     id topLayoutGuide = self.topLayoutGuide;
-    NSDictionary *views = NSDictionaryOfVariableBindings(topLayoutGuide, _applicationIdTextField, _userIdTextField, _apiKeyTextField, _showOffersButton);
+    NSDictionary *views = NSDictionaryOfVariableBindings(topLayoutGuide, _applicationIdTextField, _userIdTextField, _apiKeyTextField, _showOffersButton, _fillDebugDataButton);
     NSDictionary *metrics = @{
         @"spacing" : @20
     };
@@ -115,11 +131,23 @@
                                                                       metrics:metrics
                                                                         views:views]];
 
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-[_applicationIdTextField]-[_userIdTextField]-[_apiKeyTextField]-(spacing)-[_showOffersButton]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_fillDebugDataButton]-|"
                                                                       options:0
                                                                       metrics:metrics
                                                                         views:views]];
 
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-[_applicationIdTextField]-[_userIdTextField]-[_apiKeyTextField]-(spacing)-[_showOffersButton]-(spacing)-[_fillDebugDataButton]"
+                                                                      options:0
+                                                                      metrics:metrics
+                                                                        views:views]];
+
+}
+
+- (void)fillDataButtonTouchUpInside:(id)sender
+{
+    self.apiKeyTextField.text = @"1c915e3b5d42d05136185030892fbb846c278927";
+    self.applicationIdTextField.text = @"2070";
+    self.userIdTextField.text = @"spiderman";
 }
 
 #pragma mark - Actions -

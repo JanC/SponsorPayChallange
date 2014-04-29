@@ -34,4 +34,8 @@
     return [UIColor colorWithRed:0.08 green:0.73 blue:0.84 alpha:1];
 }
 
++ (UIColor *)SPDestructiveColor {
+    return [UIColor colorWithRed:1 green:0.23 blue:0.19 alpha:1];
+}
+
 @end

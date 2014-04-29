@@ -19,11 +19,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    // debug
-    [[SPSDKManager sharedManager] setupForApplicationId:@"2070" userId:@"spiderman" apiKey:@"1c915e3b5d42d05136185030892fbb846c278927"];
 
     SPCredentials *credentials = [[SPSDKManager sharedManager] loadCredentials];
-
 
     UIViewController *settingsViewController = [[SPSettingsViewController alloc] initWithCredentials:credentials];
 
