@@ -49,7 +49,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 
     if (self)
     {
-
+         self.title = NSLocalizedString(@"Offers", @"Offers");
     }
 
     return self;

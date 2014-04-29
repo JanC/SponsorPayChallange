@@ -23,6 +23,7 @@
     if(self) 
     {
         self.offer = offer;
+        self.title = offer.title;
     }
    return self;
 }
