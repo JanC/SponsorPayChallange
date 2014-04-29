@@ -22,6 +22,7 @@
         _teaser = dictionary[@"teaser"];
         _requiredActions = dictionary[@"required_actions"];
         _payout = @( [dictionary[@"payout"] doubleValue] );
+        _link = dictionary[@"link"] ? [NSURL URLWithString:dictionary[@"link"]] : nil;
 
         NSMutableArray *offerTypes = [NSMutableArray array];
         [dictionary[@"offer_types"] enumerateObjectsUsingBlock:^(NSDictionary * offerTypeDictionary, NSUInteger idx, BOOL *stop) {

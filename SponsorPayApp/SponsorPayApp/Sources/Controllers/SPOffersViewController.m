@@ -14,6 +14,7 @@
 #import "SPOfferType.h"
 #import "SPLoadingCell.h"
 #import "NSError+SPUIError.h"
+#import "SPOfferDetailViewController.h"
 
 #pragma mark - Constants
 
@@ -183,6 +184,10 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+
+    SPOffer *offer = self.cumulatedOffers[(NSUInteger)indexPath.row];
+    SPOfferDetailViewController *offerDetailViewController = [[SPOfferDetailViewController alloc] initWithOffer:offer];
+    [self.navigationController pushViewController:offerDetailViewController animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

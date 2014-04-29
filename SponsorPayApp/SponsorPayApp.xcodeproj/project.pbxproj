@@ -34,6 +34,7 @@
 		3DBC5B4F190BDD7D002A4EC9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBC5B4E190BDD7D002A4EC9 /* AdSupport.framework */; };
 		3DBC5B54190BF56A002A4EC9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBC5B53190BF56A002A4EC9 /* SDWebImage.framework */; };
 		3DBC5B56190BF751002A4EC9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBC5B55190BF751002A4EC9 /* ImageIO.framework */; };
+		D91FC9F5A9612679E507DCCB /* SPOfferDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC293592E1BF5170052AC /* SPOfferDetailViewController.m */; };
 		D91FCCF82B9BBA66EFF0AE30 /* NSError+SPUIError.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC60E8EB8F803EE9B6772 /* NSError+SPUIError.m */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,8 @@
 		3DBC5B4E190BDD7D002A4EC9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		3DBC5B53190BF56A002A4EC9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		3DBC5B55190BF751002A4EC9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D91FC293592E1BF5170052AC /* SPOfferDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOfferDetailViewController.m; sourceTree = "<group>"; };
+		D91FC4637C7F8D36FE28543F /* SPOfferDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOfferDetailViewController.h; sourceTree = "<group>"; };
 		D91FC60E8EB8F803EE9B6772 /* NSError+SPUIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+SPUIError.m"; sourceTree = "<group>"; };
 		D91FC9F5CD67103A00F1D49B /* NSError+SPUIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SPUIError.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +141,8 @@
 				19A1736AD0692F49F835442A /* SPOffersViewController.m */,
 				19A17CD601A75B0D0E001F5C /* SPSettingsViewController.h */,
 				19A17F16FAB6BE8CEBC218FA /* SPSettingsViewController.m */,
+				D91FC293592E1BF5170052AC /* SPOfferDetailViewController.m */,
+				D91FC4637C7F8D36FE28543F /* SPOfferDetailViewController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				19A17C77852621C0C1918DC0 /* SPSettingsViewController.m in Sources */,
 				19A170C918E7297B63E9603F /* SPLoadingCell.m in Sources */,
 				D91FCCF82B9BBA66EFF0AE30 /* NSError+SPUIError.m in Sources */,
+				D91FC9F5A9612679E507DCCB /* SPOfferDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
