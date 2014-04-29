@@ -117,6 +117,7 @@ NSString *const SPURLOffersParamMacDevice = @"device";
 
             SPURLOffersParamTimeStamp : [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]],
             SPURLOffersParamLocale : [[NSLocale preferredLanguages] objectAtIndex:0],
+            SPURLOffersParamIP : @"109.235.143.113", //  supplied from Challenge PDF
             SPURLOffersParamAppleIdFaTrackingEnabled : [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled] ? @"true" : @"false"
     } mutableCopy];
 
