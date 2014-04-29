@@ -35,6 +35,7 @@
 		3DBC5B54190BF56A002A4EC9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBC5B53190BF56A002A4EC9 /* SDWebImage.framework */; };
 		3DBC5B56190BF751002A4EC9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBC5B55190BF751002A4EC9 /* ImageIO.framework */; };
 		3DF982A9190BB13F00555CBB /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF982A8190BB13F00555CBB /* Reveal.framework */; };
+		D91FCCF82B9BBA66EFF0AE30 /* NSError+SPUIError.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC60E8EB8F803EE9B6772 /* NSError+SPUIError.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		3DBC5B53190BF56A002A4EC9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		3DBC5B55190BF751002A4EC9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		3DF982A8190BB13F00555CBB /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
+		D91FC60E8EB8F803EE9B6772 /* NSError+SPUIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+SPUIError.m"; sourceTree = "<group>"; };
+		D91FC9F5CD67103A00F1D49B /* NSError+SPUIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SPUIError.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 			children = (
 				19A17CCDF5F8298F154E4424 /* NSNumber+SPFormat.m */,
 				19A17FA678BF41A4458EDF00 /* NSNumber+SPFormat.h */,
+				D91FC60E8EB8F803EE9B6772 /* NSError+SPUIError.m */,
+				D91FC9F5CD67103A00F1D49B /* NSError+SPUIError.h */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				19A171853A72037548C516B2 /* SPOfferTypesView.m in Sources */,
 				19A17C77852621C0C1918DC0 /* SPSettingsViewController.m in Sources */,
 				19A170C918E7297B63E9603F /* SPLoadingCell.m in Sources */,
+				D91FCCF82B9BBA66EFF0AE30 /* NSError+SPUIError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

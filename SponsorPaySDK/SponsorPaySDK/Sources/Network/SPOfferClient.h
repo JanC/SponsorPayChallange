@@ -8,7 +8,7 @@
 @class SPOfferResponse;
 @class SPCredentials;
 
-typedef void (^SPOfferCompletionBlock) (SPOfferResponse *offerResponse);
+typedef void (^SPOfferCompletionBlock) (SPOfferResponse *offerResponse, NSError *error);
 
 @interface SPOfferClient : NSObject
 

@@ -69,7 +69,7 @@
     }
 
 
-    return [self.offerClient listOffersWithCustomParameter:requestParameters completion:^(SPOfferResponse *offerResponse) {
+    return [self.offerClient listOffersWithCustomParameter:requestParameters completion:^(SPOfferResponse *offerResponse, NSError *error) {
 
         //
         // Just forward the completion to the caller. Here is the place where I would do any local persistence or
@@ -77,7 +77,7 @@
         //
         if(completion)
         {
-            completion(offerResponse);
+            completion(offerResponse, error);
         }
 
     }];

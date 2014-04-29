@@ -13,6 +13,7 @@
 #import "SPThumbnail.h"
 #import "SPOfferType.h"
 #import "SPLoadingCell.h"
+#import "NSError+SPUIError.h"
 
 #pragma mark - Constants
 
@@ -97,6 +98,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.refreshControl beginRefreshing];
     [self handleRefresh:nil];
 }
 
@@ -252,12 +254,20 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 
 - (void)listOffersForCurrentPage
 {
-    [[SPSDKManager sharedManager] listOffersPage:self.currentPage completion:^(SPOfferResponse *offerResponse) {
+    [[SPSDKManager sharedManager] listOffersPage:self.currentPage completion:^(SPOfferResponse *offerResponse, NSError *error) {
         self.offerResponse = offerResponse;
         [self.cumulatedOffers addObjectsFromArray:offerResponse.offers];
         dispatch_async(dispatch_get_main_queue(), ^{
                 [self.refreshControl endRefreshing];
+
+            if(error)
+            {
+                [NSError SPShowGenericError];
+            } else
+            {
                 [self.tableView reloadData];
+            }
+
 
             });
     }];

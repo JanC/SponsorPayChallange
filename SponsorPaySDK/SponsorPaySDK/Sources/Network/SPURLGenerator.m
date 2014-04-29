@@ -70,7 +70,7 @@ NSString *const SPURLOffersParamMacDevice = @"device";
     NSString *urlString = [self concatenateParameters:dictionary];
 
     //
-    // Create the hash of all parameters and append it as "hashkey" parameter
+    // Create the hash of all parameters and append it as "hash key" parameter
     //
     if(self.requestSigner)
     {
@@ -81,10 +81,6 @@ NSString *const SPURLOffersParamMacDevice = @"device";
     return urlString;
 }
 
-
-// todo
-// hashkey
-//
 
 #pragma mark - Private
 

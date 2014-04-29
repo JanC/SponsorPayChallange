@@ -32,6 +32,7 @@
 		3DB92DBA19082D2C009124AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB92DB819082D2C009124AE /* InfoPlist.strings */; };
 		3DB92DBC19082D2C009124AE /* SponsorPaySDKParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB92DBB19082D2C009124AE /* SponsorPaySDKParserTests.m */; };
 		3DBC5B51190BDD94002A4EC9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBC5B50190BDD94002A4EC9 /* AdSupport.framework */; };
+		D91FC3B1B951930D9113008E /* NSError+SPError.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1B5892BFDB8CE077172 /* NSError+SPError.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		3DB92DB919082D2C009124AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3DB92DBB19082D2C009124AE /* SponsorPaySDKParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorPaySDKParserTests.m; sourceTree = "<group>"; };
 		3DBC5B50190BDD94002A4EC9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D91FC1B5892BFDB8CE077172 /* NSError+SPError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+SPError.m"; sourceTree = "<group>"; };
+		D91FC30D24ECCAF759547B2C /* NSError+SPError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SPError.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,7 @@
 				19A17D8864598F990ADAF16B /* Model */,
 				19A1712303DC6FED94AC510C /* Network */,
 				19A171D78DDA30C8CF265A29 /* Manager */,
+				D91FC44FC4892466C7C50775 /* Categories */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -288,6 +292,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D91FC44FC4892466C7C50775 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D91FC1B5892BFDB8CE077172 /* NSError+SPError.m */,
+				D91FC30D24ECCAF759547B2C /* NSError+SPError.h */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -385,6 +398,7 @@
 				19A17FC8C5554A00C2E016CA /* SPURLGenerator.m in Sources */,
 				19A176AF1D1FA72AACF51FA0 /* SPSHA1Signer.m in Sources */,
 				19A17474ABFD06C236717FD4 /* SPCredentials.m in Sources */,
+				D91FC3B1B951930D9113008E /* NSError+SPError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

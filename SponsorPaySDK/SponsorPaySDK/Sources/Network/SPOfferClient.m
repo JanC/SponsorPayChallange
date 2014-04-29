@@ -11,6 +11,7 @@
 #import "SPSigner.h"
 #import "SPSHA1Signer.h"
 #import "SPCredentials.h"
+#import "NSError+SPError.h"
 
 #pragma mark - Constants
 
@@ -110,15 +111,29 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
             SPOfferResponse * offerResponse = [self.dataParser parseOfferListResponse:data];
             if(completion)
             {
-                completion(offerResponse);
+                completion(offerResponse, nil);
             }
         }
         else
         {
-            NSLog(@"HTTP error %@", error);
+
+
             //
-            // Handle known error code
+            // this is kind of poor implementation, no time to do better
             //
+            if(!error)
+            {
+               error = [NSError errorWithSPCode:(SPErrorCode) httpResponse.statusCode];
+            }
+
+            NSLog(@"error %@", error);
+
+            if(completion)
+            {
+                completion(nil, error);
+            }
+
+
         }
     }];
 

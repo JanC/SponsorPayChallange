@@ -8,3 +8,19 @@
 "Show offers" = "Show offers";
 "Settings" = "Settings";
 "Loading ..." = "Loading ...";
+
+//
+// Errors
+//
+"error_400" = "Bad Request";
+"error_401" = "Unauthorized";
+"error_404" = "Not found";
+"error_500" = "Internal Server Error";
+"error_502" = "Bad Gateway";
+
+//
+// Generic error
+//
+"OK" = "OK";
+"error default title" = "Oups";
+"error default text" = "Something went wrong";
