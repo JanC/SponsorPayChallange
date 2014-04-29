@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3DB92DCD19082E27009124AE"
-               BuildableName = "SponsorPayApp.app"
-               BlueprintName = "SponsorPayApp"
-               ReferencedContainer = "container:SponsorPayApp.xcodeproj">
+               BlueprintIdentifier = "3DB92D9B19082D2B009124AE"
+               BuildableName = "libSponsorPaySDK.a"
+               BlueprintName = "SponsorPaySDK"
+               ReferencedContainer = "container:SponsorPaySDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,22 +32,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3DB92DE819082E27009124AE"
-               BuildableName = "SponsorPayAppTests.xctest"
-               BlueprintName = "SponsorPayAppTests"
-               ReferencedContainer = "container:SponsorPayApp.xcodeproj">
+               BlueprintIdentifier = "3DB92DAB19082D2B009124AE"
+               BuildableName = "SponsorPaySDKTests.xctest"
+               BlueprintName = "SponsorPaySDKTests"
+               ReferencedContainer = "container:SponsorPaySDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DB92DCD19082E27009124AE"
-            BuildableName = "SponsorPayApp.app"
-            BlueprintName = "SponsorPayApp"
-            ReferencedContainer = "container:SponsorPayApp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -57,15 +49,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DB92DCD19082E27009124AE"
-            BuildableName = "SponsorPayApp.app"
-            BlueprintName = "SponsorPayApp"
-            ReferencedContainer = "container:SponsorPayApp.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

@@ -8,4 +8,10 @@
 @implementation SPTime {
 
 }
+
+- (id)initWithDictionary:(NSDictionary *)dictionary
+{
+    return nil;
+}
+
 @end

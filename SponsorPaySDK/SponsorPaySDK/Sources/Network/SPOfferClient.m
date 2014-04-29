@@ -105,6 +105,9 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
             BOOL isValid = [self.requestSigner signatureValid:responseSignature forText:responseString secretToken:self.credentials.apiKey];
             if(!isValid)
             {
+                //
+                // ?? I don't know what I'm doing wrong here but I cannot get the signature right
+                //
                 NSLog(@"Response signature %@ is not valid", responseSignature);
             }
 
