@@ -7,6 +7,7 @@
 #import "SPOfferClient.h"
 #import "SPURLGenerator.h"
 #import "SPCredentials.h"
+#import "SPOfferType.h"
 
 @interface SPSDKManager ()
 
@@ -64,7 +65,7 @@
     if(page > 0) {
         requestParameters = @{
                 SPURLOffersParamPage : @(page),
-               // SPURLOffersParamOfferTypes : @"100,101,102,103,104,105,106,107,108,109,110,111,112,113"
+                SPURLOffersParamOfferTypes : @(SPOfferTypeFreeOffers) // hardcoded, this should be as a parameter of this method
         };
     }
 
