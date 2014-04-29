@@ -5,8 +5,9 @@
 
 #import "SPOfferDetailViewController.h"
 #import "SPOffer.h"
+#import "NSError+SPUIError.h"
 
-@interface SPOfferDetailViewController ()
+@interface SPOfferDetailViewController () <UIWebViewDelegate>
 
 @property(nonatomic, strong) UIWebView *webView;
 @property(nonatomic, strong) SPOffer *offer;
@@ -37,7 +38,8 @@
     // Setup 
     //
     self.webView = [[UIWebView alloc] init];
-    
+    self.webView.delegate = self;
+
 
     //
     // Auto Layout
@@ -59,8 +61,14 @@
 
     NSLog(@"Loading offer %@", self.offer.link.absoluteString);
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.offer.link]];
+}
 
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.de"]]];
+#pragma mark - Delegates -
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"failed loading offer: %@", error);
+    [NSError SPShowGenericError];
 }
 
 @end
