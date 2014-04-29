@@ -58,7 +58,7 @@
 
     self.fillDebugDataButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.fillDebugDataButton setTitleColor:[UIColor SPDestructiveColor] forState:UIControlStateNormal];
-    [self.fillDebugDataButton setTitle:NSLocalizedString(@"Use Sample Data", ) forState:UIControlStateNormal];
+    [self.fillDebugDataButton setTitle:NSLocalizedString(@"Use Sample Credentials", ) forState:UIControlStateNormal];
     [self.fillDebugDataButton addTarget:self action:@selector(fillDataButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
 
     //
@@ -136,7 +136,7 @@
                                                                       metrics:metrics
                                                                         views:views]];
 
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-[_applicationIdTextField]-[_userIdTextField]-[_apiKeyTextField]-(spacing)-[_showOffersButton]-(spacing)-[_fillDebugDataButton]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide]-[_applicationIdTextField]-[_userIdTextField]-[_apiKeyTextField]-(spacing)-[_showOffersButton]-[_fillDebugDataButton]"
                                                                       options:0
                                                                       metrics:metrics
                                                                         views:views]];
