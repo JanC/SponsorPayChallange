@@ -6,11 +6,12 @@
 #import "SPSHA1Signer.h"
 #include <CommonCrypto/CommonDigest.h>
 
-
-@implementation SPSHA1Signer {
-
+@implementation SPSHA1Signer
+{
 }
-- (NSString *)signText:(NSString *)text withSecretToken:(NSString *)token {
+
+- (NSString *)signText:(NSString *)text withSecretToken:(NSString *)token
+{
 
     NSAssert(token, @"The token must be supplied.");
 
@@ -31,20 +32,22 @@
 
 #pragma mark - Private
 
-- (NSString *)calculateSHA1forString:(NSString *)text {
-    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
-    NSData *stringBytes = [text dataUsingEncoding:NSUTF8StringEncoding];
+- (NSString *)calculateSHA1forString:(NSString *)string
+{
 
-    if (CC_SHA1([stringBytes bytes], (CC_LONG) [stringBytes length], digest)) {
-        NSMutableString *hexDigest = [NSMutableString stringWithCapacity:10];
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
 
-        /* SHA-1 hash has been calculated and stored in 'digest'. */
-        for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
-            [hexDigest appendString:[NSString stringWithFormat:@"%02x", digest[i]]];
-        }
-        return hexDigest;
+    CC_SHA1(data.bytes, data.length, digest);
+
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+
+    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+    {
+        [output appendFormat:@"%02x", digest[i]];
     }
-    return nil;
+
+    return output;
 }
 
 @end
