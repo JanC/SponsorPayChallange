@@ -19,28 +19,30 @@
 
 NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offers.json";
 
+static NSString *const SPOfferClientSignatureHeader = @"X-Sponsorpay-Response-Signature";
+
 @interface SPOfferClient ()
 
 @property(nonatomic, strong, readwrite) SPCredentials *credentials;
 
-
 @property(nonatomic, strong) NSURLSession *urlSession;
 
 @property(nonatomic, strong) id <SPDataParser> dataParser;
-@property (nonatomic, strong) SPURLGenerator *urlGenerator;
+@property(nonatomic, strong) SPURLGenerator *urlGenerator;
 @property(nonatomic, strong, readwrite) id <SPSigner> requestSigner;
 @end
 
-@implementation SPOfferClient {
-
+@implementation SPOfferClient
+{
 }
 
 #pragma mark - Public
 
-- (instancetype)initWithCredentials:(SPCredentials *)credentials {
+- (instancetype)initWithCredentials:(SPCredentials *)credentials
+{
     self = [super init];
 
-    if (self)
+    if ( self )
     {
         self.credentials = credentials;
 
@@ -52,7 +54,6 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
         sessionConfiguration.HTTPAdditionalHeaders = @{
                 @"Connection" : @"Keep-Alive",
                 @"TestHeader" : @"Test Value"
-
         };
 
         self.urlSession = [NSURLSession sessionWithConfiguration:sessionConfiguration];
@@ -68,7 +69,6 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
 
         self.requestSigner = [[SPSHA1Signer alloc] init];
         self.urlGenerator = [[SPURLGenerator alloc] initWithCredentials:credentials signer:self.requestSigner];
-
     }
 
     return self;
@@ -82,7 +82,7 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
     // prepare request
     //
     NSString *parametersString = [self.urlGenerator offersURLWithParameters:customParameters];
-    NSURL *requestUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@?%@", SPOfferClientBaseURL, parametersString]];
+    NSURL *requestUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", SPOfferClientBaseURL, parametersString]];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:requestUrl];
     //
     // send request
@@ -90,27 +90,16 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
 
     NSURLSessionTask *sessionTask = [self.urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSLog(@"Received HTTP %ld", (long)httpResponse.statusCode);
-        if (httpResponse.statusCode == 200)
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+        NSLog(@"Received HTTP %ld", (long) httpResponse.statusCode);
+        if ( httpResponse.statusCode == 200 )
         {
 
-            NSDictionary *headers = [httpResponse allHeaderFields];
-            NSString *responseSignature = headers[@"X-Sponsorpay-Response-Signature"];
-
-            //
-            // Verify response signature
-            //
-            NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            BOOL isValid = [self.requestSigner signatureValid:responseSignature forText:responseString secretToken:self.credentials.apiKey];
             NSError *signatureError;
+            [self verifySignatureOfData:data forResponse:httpResponse error:&signatureError];
 
-            NSLog(@"Response signature %@ is %@", responseSignature, isValid ? @"OK" : @"NOT OK");
-            signatureError = !isValid ?[NSError errorWithSPCode:SPErrorCodeInvalidSignature] : nil;
-
-
-            SPOfferResponse * offerResponse = [self.dataParser parseOfferListResponse:data];
-            if(completion)
+            SPOfferResponse *offerResponse = [self.dataParser parseOfferListResponse:data];
+            if ( completion )
             {
                 completion(offerResponse, signatureError);
             }
@@ -120,26 +109,23 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
             //
             // this is kind of poor implementation, no time to do better
             //
-            if(!error)
+            if ( !error )
             {
-               error = [NSError errorWithSPCode:(SPErrorCode) httpResponse.statusCode];
+                error = [NSError errorWithSPCode:(SPErrorCode) httpResponse.statusCode];
             }
 
             NSLog(@"error %@", error);
 
-            if(completion)
+            if ( completion )
             {
                 completion(nil, error);
             }
-
-
         }
     }];
 
     [sessionTask resume];
 
     return sessionTask;
-
 }
 
 #pragma mark
@@ -147,5 +133,20 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
 
 #pragma mark
 #pragma mark - Private
+
+- (BOOL)verifySignatureOfData:(NSData *)data forResponse:(NSHTTPURLResponse *)httpResponse error:(NSError **)pError
+{
+    //
+    // Verify response signature
+    //
+    NSDictionary *headers = [httpResponse allHeaderFields];
+    NSString *responseSignature = headers[SPOfferClientSignatureHeader];
+    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    BOOL isValid = [self.requestSigner signatureValid:responseSignature forText:responseString secretToken:self.credentials.apiKey];
+
+    NSLog(@"Response %@ %@ is %@", SPOfferClientSignatureHeader, responseSignature, isValid ? @"OK" : @"NOT OK");
+    *pError = !isValid ? [NSError errorWithSPCode:SPErrorCodeInvalidSignature] : nil;
+    return isValid;
+}
 
 @end
