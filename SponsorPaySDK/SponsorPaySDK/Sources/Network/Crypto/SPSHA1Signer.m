@@ -26,7 +26,9 @@
 
 - (BOOL)signatureValid:(NSString *)signature forText:(NSString *)text secretToken:(NSString *)token
 {
-    NSString *calculatedSignature = [self signText:text withSecretToken:token];
+    NSString *stringForDigest = [NSString stringWithFormat:@"%@%@", text, token];
+
+    NSString *calculatedSignature = [self calculateSHA1forString:stringForDigest];
     return [signature isEqualToString:calculatedSignature];
 }
 

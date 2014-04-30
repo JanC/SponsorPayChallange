@@ -103,24 +103,20 @@ NSString *const SPOfferClientBaseURL = @"http://api.sponsorpay.com/feed/v1/offer
             //
             NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             BOOL isValid = [self.requestSigner signatureValid:responseSignature forText:responseString secretToken:self.credentials.apiKey];
-            if(!isValid)
-            {
-                //
-                // ?? I don't know what I'm doing wrong here but I cannot get the signature right
-                //
-                NSLog(@"Response signature %@ is not valid", responseSignature);
-            }
+            NSError *signatureError;
+
+            NSLog(@"Response signature %@ is %@", responseSignature, isValid ? @"OK" : @"NOT OK");
+            signatureError = !isValid ?[NSError errorWithSPCode:SPErrorCodeInvalidSignature] : nil;
+
 
             SPOfferResponse * offerResponse = [self.dataParser parseOfferListResponse:data];
             if(completion)
             {
-                completion(offerResponse, nil);
+                completion(offerResponse, signatureError);
             }
         }
         else
         {
-
-
             //
             // this is kind of poor implementation, no time to do better
             //

@@ -17,6 +17,7 @@
 "error_404" = "Not found";
 "error_500" = "Internal Server Error";
 "error_502" = "Bad Gateway";
+"error_1000" = "Invalid Signature";
 
 //
 // Generic error

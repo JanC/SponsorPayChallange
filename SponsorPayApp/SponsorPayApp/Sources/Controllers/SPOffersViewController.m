@@ -267,7 +267,7 @@ static NSUInteger const SPOffersViewControllerFirstPageIndex = 1;
 
             if(error)
             {
-                [NSError SPShowGenericError];
+                [NSError SPShowErrorWithTitle:@"Oups" message:error.localizedDescription];
             } else
             {
                 [self.tableView reloadData];

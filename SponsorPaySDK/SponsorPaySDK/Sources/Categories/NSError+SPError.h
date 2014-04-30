@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, SPErrorCode) {
     SPErrorCodeNotFound = 404,
     SPErrorCodeInternalError = 500,
     SPErrorCodeBadGateway = 502,
+    SPErrorCodeInvalidSignature = 1000,
 
 };
 
